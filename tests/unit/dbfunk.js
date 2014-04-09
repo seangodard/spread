@@ -36,7 +36,7 @@ exports['Login user'] = function(test) {
 };
 
 // Test for an unsuccessful login - wrong username
-exports['Login user'] = function(test) {
+exports['Login bad username'] = function(test) {
     test.expect(1);
     dbfunk.login('wrong_username', 'password', function(success) {
         test.ok(!success);
@@ -45,7 +45,7 @@ exports['Login user'] = function(test) {
 };
 
 // Test for an unsuccessful login - wrong password
-exports['Login user'] = function(test) {
+exports['Login bad password'] = function(test) {
     test.expect(1);
     dbfunk.login('username', 'wrong_password', function(success) {
         test.ok(!success);
