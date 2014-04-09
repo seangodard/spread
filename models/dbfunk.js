@@ -54,7 +54,7 @@ module.exports.close = function(callback) {
 }
 
 // Verify credentials for login
-module.exports.retrieve = function(username, password, callback) {
+module.exports.login = function(username, password, callback) {
     
     db.users.findOne({username:username}, function(error, user) {
         if (error) throw error;
@@ -72,3 +72,6 @@ module.exports.retrieve = function(username, password, callback) {
         }
     });
 };
+
+
+
