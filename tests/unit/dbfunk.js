@@ -29,7 +29,7 @@ exports['Register a user (unsucessful)'] = function(test) {
 // Test for a successful login
 exports['Login user'] = function(test) {
     test.expect(1);
-    users.login('username', 'password', function(success) {
+    dbfunk.login('username', 'password', function(success) {
         test.ok(success);
         test.done();
     });
@@ -38,7 +38,7 @@ exports['Login user'] = function(test) {
 // Test for an unsuccessful login - wrong username
 exports['Login user'] = function(test) {
     test.expect(1);
-    users.login('wrong_username', 'password', function(success) {
+    dbfunk.login('wrong_username', 'password', function(success) {
         test.ok(!success);
         test.done();
     });
@@ -47,7 +47,7 @@ exports['Login user'] = function(test) {
 // Test for an unsuccessful login - wrong password
 exports['Login user'] = function(test) {
     test.expect(1);
-    users.login('username', 'wrong_password', function(success) {
+    dbfunk.login('username', 'wrong_password', function(success) {
         test.ok(!success);
         test.done();
     });
