@@ -52,3 +52,23 @@ module.exports.close = function(callback) {
         callback();
     });
 }
+
+// Verify credentials for login
+module.exports.retrieve = function(username, password, callback) {
+    
+    db.users.findOne({username:username}, function(error, user) {
+        if (error) throw error;
+        
+        if (!user) {
+            callback(false);
+        }
+        
+        else {
+            bcrypt.compare(password, user.password, function(error, success) {
+                if (error) throw error;
+                
+                callback(success);
+            })
+        }
+    });
+};
