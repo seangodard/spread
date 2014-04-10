@@ -12,24 +12,24 @@ module.exports.change_promoted_video = function(username, url, callback) {
     
 };
 
-// Post new video: user_id, url, length, title, view_count, shares_needed
+// Post new video: username, url, length, title, view_count, shares_needed
 // likes, favorites, flagged, category, promoted
 // Optional: promoted video url, pic, bio
-module.exports.post_new_video = function(user_id, url,length,title,
+module.exports.post_new_video = function(username, url,length,title,
     view_count,shares_needed,likes,favorites,flagged,category,promoted,
     callback) {
     
     // check if the video already exists
-    db.videos.findOne({user_id:user_id,url:url}, function(error, video){
+    db.videos.findOne({username:username,url:url}, function(error, video){
         if (error) throw error;
         
         
         if (!video) {
             // Find and create or modify a new or existing video
             db.videos.findAndModify({
-                query: {user_id:user_id,url:url},/*search criteria*/
+                query: {username:username,url:url},/*search criteria*/
                 /*field to change*/
-                update: {$setOnInsert:{user_id:user_id, url:url,
+                update: {$setOnInsert:{username:username, url:url,
                 length:length,view_count:view_count,shares_needed:shares_needed,
                 likes:likes, favorites:favorites, flagged:flagged,
                 category:category,promoted:promoted}},
@@ -42,17 +42,17 @@ module.exports.post_new_video = function(user_id, url,length,title,
                 if (error) throw error;
                 
                 // Checks each field to make sure that they match
-                callback(video.user_id == user_id &&
-                         video.url == url &&
-                         video.length == length &&
-                         video.title == title &&
-                         video.view_count == view_count &&
-                         video.shares_needed == shares_needed &&
-                         video.likes == likes &&
-                         video.favorites == favorites &&
-                         video.flagged == falgged &&
-                         video.category == category &&
-                         video.promoted == promoted);
+                callback(video.username === username &&
+                         video.url === url &&
+                         video.length === length &&
+                         video.title === title &&
+                         video.view_count === view_count &&
+                         video.shares_needed === shares_needed &&
+                         video.likes === likes &&
+                         video.favorites === favorites &&
+                         video.flagged === falgged &&
+                         video.category === category &&
+                         video.promoted === promoted);
             });
            
         }
@@ -63,6 +63,8 @@ module.exports.post_new_video = function(user_id, url,length,title,
         }   
     });
 };
+
+module.exports.delete()
 
 // Delete all videos in collection
 module.exports.deleteAll = function(callback) {
