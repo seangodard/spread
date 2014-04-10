@@ -9,8 +9,25 @@ var db = mongojs('spreadapp', ['videos']);
  * and sets the promoted field of that url to false and
  * resets all other promted fields for the users videos to false */
 module.exports.change_promoted_video = function(username, url, callback) {
+    var success = false;
+    db.find({username:username}, function(error, vids) {
+        if (error) throw error;
+        vids.forEach(function(video) {
+            if (video.url === url) {
+                video.promoted = true;
+                var success = true;
+            } else {
+                video.promoted = false;
+            }
+        });
+    });
     
+    db.save(vids, function(error){
+            if (error) throw error;
+    });
+    callback(success);
 };
+
 
 // Post new video: username, url, length, title, view_count, shares_needed
 // likes, favorites, flagged, category, promoted
@@ -67,7 +84,21 @@ module.exports.post_new_video = function(username, url,length,title,
     });
 };
 
-module.exports.delete()
+// Delete a specific video
+module.exports.delete = function(username, url) {
+    
+    // check to make sure video already exists
+    db.videos.findOne({username:username,url:url}, function(error, video){
+        if (error) throw error;
+        
+        // if the video exists, remove it
+        if (video) {
+            db.videos.remove({url:url}, function(error) {
+                if (error) throw error;
+            });
+        };
+    });
+};
 
 // Delete all videos in collection
 module.exports.deleteAll = function(callback) {
