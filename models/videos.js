@@ -64,7 +64,21 @@ module.exports.post_new_video = function(username, url,length,title,
     });
 };
 
-module.exports.delete()
+// Delete a specific video
+module.exports.delete = function(username, url) {
+    
+    // check to make sure video already exists
+    db.videos.findOne({username:username,url:url}, function(error, video){
+        if (error) throw error;
+        
+        // if the video exists, remove it
+        if (video) {
+            db.videos.remove({url:url}, function(error) {
+                if (error) throw error;
+            });
+        };
+    });
+};
 
 // Delete all videos in collection
 module.exports.deleteAll = function(callback) {
