@@ -12,7 +12,57 @@ module.exports.change_promoted_video = function(username, url, callback) {
     
 };
 
-// Add video
+// Post new video: user_id, url, length, title, view_count, shares_needed
+// likes, favorites, flagged, category, promoted
+// Optional: promoted video url, pic, bio
+module.exports.post_new_video = function(user_id, url,length,title,
+    view_count,shares_needed,likes,favorites,flagged,category,promoted,
+    callback) {
+    
+    // check if the video already exists
+    db.videos.findOne({user_id:user_id,url:url}, function(error, video){
+        if (error) throw error;
+        
+        
+        if (!video) {
+            // Find and create or modify a new or existing video
+            db.videos.findAndModify({
+                query: {user_id:user_id,url:url},/*search criteria*/
+                /*field to change*/
+                update: {$setOnInsert:{user_id:user_id, url:url,
+                length:length,view_count:view_count,shares_needed:shares_needed,
+                likes:likes, favorites:favorites, flagged:flagged,
+                category:category,promoted:promoted}},
+                /*says to return modified version*/
+                new: true,
+                /*create a new document if there wasn't one*/
+                upsert: true
+                
+            }, function(error, user) {
+                if (error) throw error;
+                
+                // Checks each field to make sure that they match
+                callback(video.user_id == user_id &&
+                         video.url == url &&
+                         video.length == length &&
+                         video.title == title &&
+                         video.view_count == view_count &&
+                         video.shares_needed == shares_needed &&
+                         video.likes == likes &&
+                         video.favorites == favorites &&
+                         video.flagged == falgged &&
+                         video.category == category &&
+                         video.promoted == promoted);
+            });
+           
+        }
+        
+        // if it is there return false
+        else {
+             callack(false);
+        }   
+    });
+};
 
 // Delete all videos in collection
 module.exports.deleteAll = function(callback) {
@@ -29,3 +79,4 @@ module.exports.close = function(callback) {
         callback();
     });
 }
+
