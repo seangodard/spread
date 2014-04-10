@@ -4,8 +4,6 @@ var express = require('express');
 // Create a server
 var app = express();
 
-var db = mongojs('visitapp',['visitors']);
-
 // Configure the server
 app.set('view engine', 'ejs');
 app.set('views', '/spread/views');
