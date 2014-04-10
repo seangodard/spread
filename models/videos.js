@@ -23,7 +23,7 @@ module.exports.post_new_video = function(user_id, url,length,title,
     db.videos.findOne({user_id:user_id,url:url}, function(error, video){
         if (error) throw error;
         
-        
+        // if the video doesn't already exist
         if (!video) {
             // Find and create or modify a new or existing video
             db.videos.findAndModify({
@@ -33,6 +33,7 @@ module.exports.post_new_video = function(user_id, url,length,title,
                 length:length,view_count:view_count,shares_needed:shares_needed,
                 likes:likes, favorites:favorites, flagged:flagged,
                 category:category,promoted:promoted}},
+                
                 /*says to return modified version*/
                 new: true,
                 /*create a new document if there wasn't one*/
