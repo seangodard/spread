@@ -55,12 +55,14 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.category === category &&
                          video.promoted === promoted);
             });
+            
+            //module.exports.change_promoted_video(username,url,function(callback,);
            
         }
         
         // if it is there return false
         else {
-             callack(false);
+             callback(false);
         }   
     });
 };
