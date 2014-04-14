@@ -73,7 +73,9 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.promoted === promoted);
             });
             
-            //module.exports.change_promoted_video(username,url,function(callback,);
+            module.exports.change_promoted_video(username,url,function(success) {
+                callback(success);
+            });
            
         }
         
