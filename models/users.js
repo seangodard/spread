@@ -37,21 +37,6 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
     });
 };
 
-// Delete all users in collection
-module.exports.deleteAll = function(callback) {
-    db.users.remove({}, function(error) {
-        if (error) throw error;
-        callback();
-    });
-};
-
-// Close the connection
-module.exports.close = function(callback) {
-    db.close(function(error) {
-        if (error) throw error;
-        callback();
-    });
-}
 
 // Verify credentials for login
 module.exports.login = function(username, password, callback) {
@@ -88,7 +73,7 @@ module.exports.change_password = function(username, new_password, callback) {
             /*says to return modified version*/
             new: true,
             /*create a new document if there wasn't one*/
-            upsert: false // ???????????????/
+            upsert: false // ???????????????
             
         }, function(error, user) {
             if (error) throw error;
@@ -163,5 +148,20 @@ module.exports.update_email = function(username, new_email, callback) {
     });
 };
 
+// Delete all users in collection
+module.exports.deleteAll = function(callback) {
+    db.users.remove({}, function(error) {
+        if (error) throw error;
+        callback();
+    });
+};
+
+// Close the connection
+module.exports.close = function(callback) {
+    db.close(function(error) {
+        if (error) throw error;
+        callback();
+    });
+}
 
 
