@@ -9,8 +9,25 @@ var db = mongojs('spreadapp', ['videos']);
  * and sets the promoted field of that url to false and
  * resets all other promted fields for the users videos to false */
 module.exports.change_promoted_video = function(username, url, callback) {
+    var success = false;
+    db.find({username:username}, function(error, vids) {
+        if (error) throw error;
+        vids.forEach(function(video) {
+            if (video.url === url) {
+                video.promoted = true;
+                var success = true;
+            } else {
+                video.promoted = false;
+            }
+        });
+    });
     
+    db.save(vids, function(error){
+            if (error) throw error;
+    });
+    callback(success);
 };
+
 
 // Post new video: username, url, length, title, view_count, shares_needed
 // likes, favorites, flagged, category, promoted
@@ -23,7 +40,7 @@ module.exports.post_new_video = function(username, url,length,title,
     db.videos.findOne({username:username,url:url}, function(error, video){
         if (error) throw error;
         
-        
+        // if the video doesn't already exist
         if (!video) {
             // Find and create or modify a new or existing video
             db.videos.findAndModify({
@@ -33,6 +50,7 @@ module.exports.post_new_video = function(username, url,length,title,
                 length:length,view_count:view_count,shares_needed:shares_needed,
                 likes:likes, favorites:favorites, flagged:flagged,
                 category:category,promoted:promoted}},
+                
                 /*says to return modified version*/
                 new: true,
                 /*create a new document if there wasn't one*/
@@ -54,12 +72,14 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.category === category &&
                          video.promoted === promoted);
             });
+            
+            //module.exports.change_promoted_video(username,url,function(callback,);
            
         }
         
         // if it is there return false
         else {
-             callack(false);
+             callback(false);
         }   
     });
 };
