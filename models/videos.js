@@ -40,7 +40,7 @@ module.exports.post_new_video = function(username, url,length,title,
     db.videos.findOne({username:username,url:url}, function(error, video){
         if (error) throw error;
         
-        
+        // if the video doesn't already exist
         if (!video) {
             // Find and create or modify a new or existing video
             db.videos.findAndModify({
@@ -50,6 +50,7 @@ module.exports.post_new_video = function(username, url,length,title,
                 length:length,view_count:view_count,shares_needed:shares_needed,
                 likes:likes, favorites:favorites, flagged:flagged,
                 category:category,promoted:promoted}},
+                
                 /*says to return modified version*/
                 new: true,
                 /*create a new document if there wasn't one*/
@@ -71,12 +72,14 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.category === category &&
                          video.promoted === promoted);
             });
+            
+            //module.exports.change_promoted_video(username,url,function(callback,);
            
         }
         
         // if it is there return false
         else {
-             callack(false);
+             callback(false);
         }   
     });
 };
