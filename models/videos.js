@@ -111,5 +111,5 @@ module.exports.close = function(callback) {
         if (error) throw error;
         callback();
     });
-}
+};
 
