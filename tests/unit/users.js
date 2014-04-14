@@ -53,6 +53,15 @@ exports['Login bad password'] = function(test) {
     });
 };
 
+// Test for a successful password change
+exports['chage password successful'] = function(test) {
+    test.expect(1);
+    users.change_password('username', 'password', function(success) {
+        test.ok(success);
+        test.done();
+    });
+};
+
 // Empty the database and close the connection
 exports['cleanup'] = function(test) {
     users.deleteAll(function() {

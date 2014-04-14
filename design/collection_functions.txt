@@ -1,230 +1,287 @@
-An outline for what functions are needed for each collection:
+================"Spread" Software Engineering Project =================
 
+== Outline for the functions in the "spreadapp" database collections ==
+
+Developers: Sean Godard, Matt Hunziker, Jose Alejandro, Tom Joyce
+Spring Semester, 2014
+Professor: Dr. Lisa Torrey
 
 =======================================================================
-
-users:
+========================= collection: users ===========================
 
 - adduser
-	- finished with test code 
 
+	status: finished
 
+	test code? yes
+
+	comments: 
 
 ------------------------------------------------------------------------
 
 - login
-	- finished with test code
 
+	status: finished
 
+	test code? yes
+
+	comments:
 
 ------------------------------------------------------------------------
 
 - change_password
 	
-	- not started
+	status: in progress, Tom
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_bio
-	
-	- not started
 
+	status: in progress, Tom
 
+	test code? no
+
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_picture
 
-	- not started
+	status: in progress, Tom
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_email
 
-	- not started
+	status: in progress, Tom
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - delete_all
 
-	- in progress
+	status: in progress, Matt
 
+	test code? no
 
+	comments:
 
 ========================================================================
-
-videos:
+=========================== collection: videos =========================
 
 - change_promoted_video
 
-	- in progress
+	status: in progress, Sean
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - post_new_video
 
-	- in progress
+	status: in progress, Jose
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - delete 
-	- in progress
 
+	status: in progress, Matt
 
+	test code? no
+
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_viewcount
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_likecount
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - update_shares
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - favorite
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - flagged
 
-	- not started
+	status: not started
 
+	test code? no
 
-
+	comments:
 
 ========================================================================
-
-history:
+=========================== collection: history ========================
 
 - add_item
 	
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - delete_item
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - delete_history
 	
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - retrieve_history
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
-===================================================================================
-
-messages:
+========================================================================
+========================== collection: messages ========================
 
 - retrieve_inbox
 
-	- not started
+	status: not started
 
+	test code? no
 
-
-------------------------------------------------------------------------
-
-- send_message (adds new message to Messages collection)
-
-	- not started
-
-
+	comments:
 
 ------------------------------------------------------------------------
 
-- viewed (checks if the message has been read by its recipient)
+- send_message 
 
-	- not started
+	status: not started
 
+	test code? no
 
-
-------------------------------------------------------------------------
-
-- delete_message_recip (deletes message only for recipient, sender can still view it)
-
-	- not started
-
-
+	comments: adds new message to messages collection
 
 ------------------------------------------------------------------------
 
-- delete_message_sender (delete message only for sender, recipient can still view it)
+- viewed
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments: checks if the message has been read by its recipient
 
+------------------------------------------------------------------------
+
+- delete_message_recip 
+
+	status: not started
+
+	test code? no
+
+	comments: deletes message only for recipient, sender can 
+		    still view it
+
+------------------------------------------------------------------------
+
+- delete_message_sender 
+
+	status: not started
+
+	test code? no
+
+	comments: delete message only for sender, recipient can 
+		    still view it
 
 ========================================================================
-
-posts:
+========================== collection: posts ===========================
 
 - add_post
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - delete_post
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
 - edit_post
 
-	- not started
+	status: not started
 
+	test code? no
 
+	comments:
 
 ------------------------------------------------------------------------
 
