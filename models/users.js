@@ -73,7 +73,95 @@ module.exports.login = function(username, password, callback) {
     });
 };
 
+// Change Password
+// ******** not finished, copied and pasted, needs test code too
+module.exports.change_password = function(username, new_password, callback) {    
+    bcrypt.hash(new_password, 10, function(error,hash) {
+        if (error) throw error;
+        
+        // Find and modify an existing user's password
+        db.users.findAndModify({
+            /*search criteria*/
+            query: {username:username},
+            /*field to change*/
+            update: {$setOnInsert:{username:username, password:hash}},
+            /*says to return modified version*/
+            new: true,
+            /*create a new document if there wasn't one*/
+            upsert: false // ???????????????/
+            
+        }, function(error, user) {
+            if (error) throw error;
+            
+            // Checks each field to make sure that they match
+            callback(user.username == username &&
+                     user.password == hash);
+        });    
+    });
+};
 
+// Update bio
+// ******** not finished, copied and pasted, needs test code too
+module.exports.update_bio = function(username, new_bio, callback) {    
+
+    // Find and modify an existing user's bio
+    db.users.findAndModify({
+        /*search criteria*/
+        query: {username:username},
+        /*field to change*/
+        update: {$setOnInsert:{username:username, bio:new_bio}},
+        /*says to return modified version*/
+        new: true,
+        /*create a new document if there wasn't one*/
+        upsert: false // ???????????????
+        
+        }, function(error, user) {
+            if (error) throw error;
+                
+    });
+};
+
+// Update profile picture
+// ******** not finished, copied and pasted, needs test code too
+module.exports.update_pic = function(username, new_pic, callback) {    
+
+    // Find and modify an existing user's bio
+    db.users.findAndModify({
+        /*search criteria*/
+        query: {username:username},
+        /*field to change*/
+        update: {$setOnInsert:{username:username, pic:pic}},
+        /*says to return modified version*/
+        new: true,
+        /*create a new document if there wasn't one*/
+        upsert: false // ???????????????
+        
+        }, function(error, user) {
+            if (error) throw error;
+                
+    });
+};
+
+// Update email
+// ******** not finished, copied and pasted, needs test code too
+module.exports.update_email = function(username, new_email, callback) {    
+
+    // Find and modify an existing user's bio
+    db.users.findAndModify({
+        /*search criteria*/
+        query: {username:username},
+        /*field to change*/
+        update: {$setOnInsert:{username:username, email:new_email}},
+        /*says to return modified version*/
+        new: true,
+        /*create a new document if there wasn't one*/
+        upsert: false // ???????????????/
+        
+        }, function(error, user) {
+            if (error) throw error;
+                
+    });
+};
 
 
 
