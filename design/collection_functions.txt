@@ -31,7 +31,7 @@ Professor: Dr. Lisa Torrey
 
 - change_password
 	
-	status: in progress
+	status: in progress, Tom
 
 	test code? no
 
@@ -41,7 +41,7 @@ Professor: Dr. Lisa Torrey
 
 - update_bio
 
-	status: in progress
+	status: in progress, Tom
 
 	test code? no
 
@@ -51,7 +51,7 @@ Professor: Dr. Lisa Torrey
 
 - update_picture
 
-	status: in progress
+	status: in progress, Tom
 
 	test code? no
 
@@ -61,7 +61,7 @@ Professor: Dr. Lisa Torrey
 
 - update_email
 
-	status: in progress
+	status: in progress, Tom
 
 	test code? no
 
@@ -71,7 +71,7 @@ Professor: Dr. Lisa Torrey
 
 - delete_all
 
-	status: in progress
+	status: in progress, Matt
 
 	test code? no
 
@@ -82,7 +82,7 @@ Professor: Dr. Lisa Torrey
 
 - change_promoted_video
 
-	status: in progress
+	status: in progress, Sean
 
 	test code? no
 
@@ -92,7 +92,7 @@ Professor: Dr. Lisa Torrey
 
 - post_new_video
 
-	status: in progress
+	status: in progress, Jose
 
 	test code? no
 
@@ -102,7 +102,7 @@ Professor: Dr. Lisa Torrey
 
 - delete 
 
-	status: in progress
+	status: in progress, Matt
 
 	test code? no
 
