@@ -73,14 +73,13 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.promoted === promoted);
             });
             
-<<<<<<< HEAD
+
             module.exports.change_promoted_video(username,url,function(success) {
                 callback(success);
             });
-=======
+
             //module.exports.change_promoted_video(username,url,function(callback,);
->>>>>>> 8d98fc6f20439976bee3ceeddb04381659ad8f9b
-           
+          
         }
         
         // if it is there return false
@@ -92,7 +91,6 @@ module.exports.post_new_video = function(username, url,length,title,
 
 // Delete a specific video
 module.exports.delete = function(username, url) {
-<<<<<<< HEAD
     
     // check to make sure video already exists
     db.videos.findOne({username:username,url:url}, function(error, video){
@@ -103,14 +101,12 @@ module.exports.delete = function(username, url) {
             db.videos.remove({url:url}, function(error) {
                 if (error) throw error;
             });
-=======
 
         // if the video exists, remove it
         if (video) {
             db.videos.remove({username:username,url:url}, function(error) {
                 if (error) throw error;
->>>>>>> 8d98fc6f20439976bee3ceeddb04381659ad8f9b
-        };
+	    };
     });
 };
 
@@ -128,9 +124,3 @@ module.exports.close = function(callback) {
         if (error) throw error;
         callback();
     });
-<<<<<<< HEAD
-};
-=======
-}
->>>>>>> 8d98fc6f20439976bee3ceeddb04381659ad8f9b
-

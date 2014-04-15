@@ -7,7 +7,7 @@ var db = mongojs('spreadapp', ['users']);
 
 // Add User: username, password, firstname, lastname, email
 // Optional: promoted video url, pic, bio
-module.exports.adduser = function(username, password, first_name, last_name, email, promoted_video_url, pic, bio, callback) {    
+module.exports.adduser = function(username, password, first_name, last_name, email, promoted_video_url, pic_url, bio, callback) {    
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
@@ -15,7 +15,7 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
         db.users.findAndModify({
             query: {username:username},/*search criteria*/
             /*field to change*/
-            update: {$setOnInsert:{username:username, password:hash,first_name:first_name,last_name:last_name, email:email, promoted_video_url:promoted_video_url, pic:pic, bio:bio}},
+            update: {$setOnInsert:{username:username, password:hash,first_name:first_name,last_name:last_name, email:email, promoted_video_url:promoted_video_url, pic_url:pic_url, bio:bio}},
             /*says to return modified version*/
             new: true,
             /*create a new document if there wasn't one*/
@@ -31,7 +31,7 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
                      user.last_name == last_name &&
                      user.email == email &&
                      user.promoted_video_url == promoted_video_url &&
-                     user.pic == pic &&
+                     user.pic_url == pic_url &&
                      user.bio == bio);
         });    
     });
@@ -60,10 +60,21 @@ module.exports.login = function(username, password, callback) {
 
 // Change Password
 // ******** not finished, copied and pasted, needs test code too
-module.exports.change_password = function(username, new_password, callback) {    
-    bcrypt.hash(new_password, 10, function(error,hash) {
+module.exports.change_password = function(username, password, new_password, callback) {    
+    bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
+        bcrypt.hash(new_password, 10, function(error, hash) {
+            if (error) throw error;
+            
+            if (password === new_password) {
+                
+            }
+        });
+        // if the current password is the same as the new password, throw an error
+        if (password === new_password) {
+            throw error;
+        }
         // Find and modify an existing user's password
         db.users.findAndModify({
             /*search criteria*/
