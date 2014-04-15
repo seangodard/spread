@@ -16,7 +16,7 @@ exports['post'] = function(test) {
 };
 
 // Test retrieve a post successful
-exports['retrieve post successful'] = function(test) {
+exports['retrieve post (testing add)'] = function(test) {
     test.expect(1);
     var success = false;
     posts.retrieve_posts('Alice', 'timestamp' , function(posts) {
@@ -31,7 +31,7 @@ exports['retrieve post successful'] = function(test) {
 };
 
 // Test retrieve a post unsuccessful
-exports['retrieve post unsuccessful'] = function(test) {
+exports['retrieve post (testing add: non existing post)'] = function(test) {
     test.expect(1);
     var success = false;
     posts.retrieve_posts('Bob', 'timestamp' , function(posts) {
@@ -47,8 +47,12 @@ exports['retrieve post unsuccessful'] = function(test) {
 
 // Test delete a post
 exports['delete post'] = function(test) {
-    posts.delete_post('Alice', 'timestamp', 'subject', 'body', function() {
-        test.done();
+    test.expect(1);
+    posts.delete_post('Alice', 'timestamp', function() {
+        posts.retrieve_posts('Alice', 'timestamp' , function(posts) {
+            test.ok(posts.length === 0);
+            test.done();
+        });
     });
 };
 

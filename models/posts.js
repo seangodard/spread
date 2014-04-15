@@ -29,11 +29,11 @@ module.exports.edit_post = function(username, timestamp, newsubject, newbody, ca
 };
 
 // Delete a post
-module.exports.delete_post = function(username, timestamp, subject, body, callback) {
-    db.posts.remove({username:username, timestamp:timestamp, subject:subject, body:body},{justOne:true}, function(error) {
+module.exports.delete_post = function(username, timestamp, callback) {
+    db.posts.remove({username:username, timestamp:timestamp},{justOne:true}, function(error) {
         if (error) throw error;
+        callback();
     });
-    callback();
 };
 
 // Delete all posts in collection
