@@ -8,9 +8,19 @@ exports['setup'] = function(test) {
     });
 };
 
+// Test add a post
 exports['post'] = function(test) {
     test.expect(1);
-    posts.add_post('timestamp','subject', 'body', function(success) {
+    posts.add_post('username', 'timestamp','subject', 'body', function(success) {
+        test.ok(success);
+        test.done();
+    });
+};
+
+// Test delete a post
+exports['delete post'] = function(test) {
+    test.expect(1);
+    posts.delete_post('username', 'timestamp', 'subject', 'body', function(success) {
         test.ok(success);
         test.done();
     });
