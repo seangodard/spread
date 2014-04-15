@@ -257,9 +257,9 @@ Professor: Dr. Lisa Torrey
 
 - add_post
 
-	status: not started
+	status: done
 
-	test code? no
+	test code? yes
 
 	comments:
 
@@ -267,9 +267,9 @@ Professor: Dr. Lisa Torrey
 
 - delete_post
 
-	status: not started
+	status: done
 
-	test code? no
+	test code? yes
 
 	comments:
 
@@ -277,15 +277,23 @@ Professor: Dr. Lisa Torrey
 
 - edit_post
 
-	status: not started
+	status: done
 
-	test code? no
+	test code? yes
 
 	comments:
 
 ------------------------------------------------------------------------
 
+- retrieve_posts
 
+	status: done
+
+	test code? yes
+
+	comments:
+
+------------------------------------------------------------------------
 
 
 
