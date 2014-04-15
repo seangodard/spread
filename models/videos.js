@@ -73,10 +73,13 @@ module.exports.post_new_video = function(username, url,length,title,
                          video.promoted === promoted);
             });
             
+
             module.exports.change_promoted_video(username,url,function(success) {
                 callback(success);
             });
-           
+
+            //module.exports.change_promoted_video(username,url,function(callback,);
+          
         }
         
         // if it is there return false
@@ -98,7 +101,12 @@ module.exports.delete = function(username, url) {
             db.videos.remove({url:url}, function(error) {
                 if (error) throw error;
             });
-        };
+
+        // if the video exists, remove it
+        if (video) {
+            db.videos.remove({username:username,url:url}, function(error) {
+                if (error) throw error;
+	    };
     });
 };
 
@@ -116,5 +124,3 @@ module.exports.close = function(callback) {
         if (error) throw error;
         callback();
     });
-};
-
