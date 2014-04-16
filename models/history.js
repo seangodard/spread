@@ -12,14 +12,12 @@ module.exports.add_item = function(username, timestamp, url, callback) {
     });
 };
 
-// Retrieve history with a date range
+// Retrieve users history within a date range
 module.exports.retrieve_history = function(username, startrange, endrange, callback) {
-    
-};
-
-// Delete an item from history
-module.exports.delete_item = function() {
-    
+    db.history.find({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
+        if (error) throw error;
+        callback(history);
+    });
 };
 
 // Delete entire history

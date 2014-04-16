@@ -163,9 +163,9 @@ Professor: Dr. Lisa Torrey
 
 - add_item
 	
-	status: not started
+	status: done
 
-	test code? no
+	test code? done
 
 	comments:
 
@@ -193,9 +193,9 @@ Professor: Dr. Lisa Torrey
 
 - retrieve_history
 
-	status: not started
+	status: in progress
 
-	test code? no
+	test code? writting test cases to ensure retrieving correct ranges
 
 	comments:
 
