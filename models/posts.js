@@ -8,8 +8,8 @@ var db = mongojs('spreadapp', ['posts']);
 module.exports.add_post = function(username, timestamp, subject, body, callback) {
     db.posts.insert({username:username, timestamp:timestamp, subject:subject, body:body}, function(error) {
         if (error) throw error;
+        callback();
     });
-    callback();
 };
 
 // Retrieve posts

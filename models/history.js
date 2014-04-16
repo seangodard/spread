@@ -5,7 +5,15 @@ var mongojs = require('mongojs');
 var db = mongojs('spreadapp', ['history']);
 
 // Add an item to history
-module.exports.add_item = function() {
+module.exports.add_item = function(username, timestamp, url, callback) {
+    db.history.insert({username:username,timestamp:timestamp,url:url}, function(error) {
+        if (error) throw error;
+        callback();
+    });
+};
+
+// Retrieve history with a date range
+module.exports.retrieve_history = function(username, startrange, endrange, callback) {
     
 };
 
@@ -16,11 +24,6 @@ module.exports.delete_item = function() {
 
 // Delete entire history
 module.exports.add_history = function() {
-    
-};
-
-// Retrieve history with a date range
-module.exports.retrieve_history = function() {
     
 };
 

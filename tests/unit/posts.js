@@ -72,7 +72,6 @@ exports['delete post'] = function(test) {
     test.expect(1);
     posts.delete_post('Alice', 'timestamp', function() {
         posts.retrieve_posts('Alice', function(posts) {
-            console.log('posts');
             test.ok(posts.length === 0);
             test.done();
         });
