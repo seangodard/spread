@@ -1,6 +1,10 @@
 // Unit tests for the posts collection
 var posts = require('../../models/posts');
 
+// Datestamp for testing purposes 
+var now = new Date();
+console.log(now);
+
 // Empty the database
 exports['setup'] = function(test) {
     posts.deleteAll(function() {
@@ -10,7 +14,7 @@ exports['setup'] = function(test) {
 
 // Test add a post
 exports['post'] = function(test) {
-    posts.add_post('Alice', 'timestamp','Subject: Party', 'Body: At my house', function() {
+    posts.add_post('Alice', now,'Subject: Party', 'Body: At my house', function() {
         test.done();
     });
 };
@@ -49,7 +53,7 @@ exports['retrieve post (testing add: non existing post)'] = function(test) {
 exports['test editing a post'] = function(test) {
     test.expect(1);
     var success = false;
-    posts.edit_post('Alice','timestamp','new subject','new body', function() {
+    posts.edit_post('Alice',now,'new subject','new body', function() {
         posts.retrieve_posts('Alice', function (posts) {
             if (posts.length === 1) {
                 posts.forEach(function(post) {
@@ -70,7 +74,7 @@ exports['test editing a post'] = function(test) {
 // Test delete a post
 exports['delete post'] = function(test) {
     test.expect(1);
-    posts.delete_post('Alice', 'timestamp', function() {
+    posts.delete_post('Alice', now, function() {
         posts.retrieve_posts('Alice', function(posts) {
             test.ok(posts.length === 0);
             test.done();
