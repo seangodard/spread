@@ -4,6 +4,8 @@ var history = require('../../models/history');
 // Datestamp for testing purposes 
 var now = new Date();
 console.log(now);
+var older = now.setMonth(1);
+var ancient = now.setFullYear(1990);
 
 // Empty the database
 exports['setup'] = function(test) {
@@ -28,16 +30,24 @@ exports['retrieve an item from database'] = function(test) {
     });  
 };
 
-/*
+
 // Test retrieving history with some items that should not be included
-exports['retrieve an item from database'] = function(test) {
+exports['retrieve an item from database (excluding properly)'] = function(test) {
     test.expect(1);
-    history.retrieve_history('username', now, now, function(history) {
-        test.ok(history.length === 1);
-        test.done();
+    var success = false;
+    history.add_item('username', ancient, 'differenturl',  function() {
+        history.retrieve_history('username', now, now, function(history) {
+            history.forEach(function(historyItem) {
+                if (history.length === 1 && historyItem.url === 'url') {
+                    success = true;
+                }
+            });
+            test.ok(success);
+            test.done();
+        });
     });  
 };
-*/
+
 
 // Empty the database and close the connection
 exports['cleanup'] = function(test) {
