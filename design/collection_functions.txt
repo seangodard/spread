@@ -112,7 +112,7 @@ Professor: Dr. Lisa Torrey
 
 - update_viewcount
 
-	status: not started
+	status: in progress, Matt
 
 	test code? no
 
@@ -122,7 +122,7 @@ Professor: Dr. Lisa Torrey
 
 - update_likecount
 
-	status: not started
+	status: in progress, Matt
 
 	test code? no
 
@@ -132,7 +132,7 @@ Professor: Dr. Lisa Torrey
 
 - update_shares
 
-	status: not started
+	status: in progress, Matt
 
 	test code? no
 
@@ -142,7 +142,7 @@ Professor: Dr. Lisa Torrey
 
 - favorite
 
-	status: not started
+	status: in progress, Matt
 
 	test code? no
 
@@ -152,7 +152,7 @@ Professor: Dr. Lisa Torrey
 
 - flagged
 
-	status: not started
+	status: in progress, Matt
 
 	test code? no
 
