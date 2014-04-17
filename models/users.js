@@ -60,15 +60,15 @@ module.exports.login = function(username, password, callback) {
 // Change Password
 // ******** not finished, copied and pasted, needs test code too
 module.exports.change_password = function(username, password, new_password, callback) {    
-
+    var verified_password = false;
+    
     // Compare the user's password to their password in the database.
     // If there's a match, return true
-    bcrypt.compare(password, user.password, function(error, success) {
+    bcrypt.compare(password, new_password, function(error, success) {
         if (error) throw error;
         
-        callback(success);
+        callback(verified_password = true);
     });
-    
     bcrypt.hash(new_password, 10, function(error, hash) {
         if (error) throw error;
             
@@ -81,7 +81,7 @@ module.exports.change_password = function(username, password, new_password, call
             /*says to return modified version*/
             new: true,
             /*create a new document if there wasn't one*/
-            upsert: false 
+            upsert: true
             
         }, function(error, user) {
             if (error) throw error;
@@ -93,7 +93,6 @@ module.exports.change_password = function(username, password, new_password, call
 };
 
 // Update bio
-// ******** not finished, copied and pasted, needs test code too
 module.exports.update_bio = function(username, new_bio, callback) {    
 
     // Find and modify an existing user's bio
@@ -105,7 +104,7 @@ module.exports.update_bio = function(username, new_bio, callback) {
         /*says to return modified version*/
         new: true,
         /*create a new document if there wasn't one*/
-        upsert: false // ???????????????
+        upsert: true
         
         }, function(error, user) {
             if (error) throw error;
@@ -115,7 +114,6 @@ module.exports.update_bio = function(username, new_bio, callback) {
 };
 
 // Update profile picture
-// ******** not finished, copied and pasted, needs test code too
 module.exports.update_pic_url = function(username, new_pic_url, callback) {    
 
     // Find and modify an existing user's bio
@@ -137,7 +135,6 @@ module.exports.update_pic_url = function(username, new_pic_url, callback) {
 };
 
 // Update email
-// ******** not finished, copied and pasted, needs test code too
 module.exports.update_email = function(username, new_email, callback) {    
 
     // Find and modify an existing user's bio

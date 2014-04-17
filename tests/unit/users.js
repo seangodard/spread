@@ -18,7 +18,7 @@ exports['register a user (sucessful)'] = function(test) {
 };
 
 // Test for an unsuccessful registration
-exports['register a user (unsucessful)'] = function(test) {
+exports['register a user (unsuccessful)'] = function(test) {
     test.expect(1);
     users.adduser('username', 'password','first_name','last_name', 'email', 'promoted_video_url', 'pic', 'bio', function(success) {
         test.ok(!success);
@@ -27,7 +27,7 @@ exports['register a user (unsucessful)'] = function(test) {
 };
 
 // Test for a successful login
-exports['login user'] = function(test) {
+exports['login (successful)'] = function(test) {
     test.expect(1);
     users.login('username', 'password', function(success) {
         test.ok(success);
@@ -36,7 +36,7 @@ exports['login user'] = function(test) {
 };
 
 // Test for an unsuccessful login - wrong username
-exports['login bad username'] = function(test) {
+exports['login (bad username)'] = function(test) {
     test.expect(1);
     users.login('wrong_username', 'password', function(success) {
         test.ok(!success);
@@ -45,7 +45,7 @@ exports['login bad username'] = function(test) {
 };
 
 // Test for an unsuccessful login - wrong password
-exports['login bad password'] = function(test) {
+exports['login (bad password)'] = function(test) {
     test.expect(1);
     users.login('username', 'wrong_password', function(success) {
         test.ok(!success);
@@ -54,7 +54,7 @@ exports['login bad password'] = function(test) {
 };
 
 // Test for a successful password change
-exports['change password successful'] = function(test) {
+exports['change password (successful)'] = function(test) {
     test.expect(1);
     users.change_password('username', 'password', 'new_password', function(success) {
         test.ok(success);
@@ -63,16 +63,16 @@ exports['change password successful'] = function(test) {
 };
 
 // Test for an unsuccessful password change - wrong current password
-exports['change password unsuccessful'] = function(test) {
+exports['change password (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.change_password('username', 'wrong_password', 'wrong_new_password', function(success) {
+    users.change_password('username', 'wrong_password', 'new_password', function(success) {
         test.ok(!success);
         test.done();
     });
 };
 
 // Test for a successful bio change
-exports['update bio successful'] = function(test) {
+exports['update bio (successful)'] = function(test) {
     test.expect(1);
     users.update_bio('username', 'new_bio', function(success) {
         test.ok(success);
@@ -81,9 +81,9 @@ exports['update bio successful'] = function(test) {
 };
 
 // Test for an unsuccessful bio change
-exports['update bio unsuccessful'] = function(test) {
+exports['update bio (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.update_bio('username', 'bad_new_bio', function(success) {
+    users.update_bio('badusername', 'new_bio', function(success) {
         test.ok(!success);
         test.done();
     });
@@ -110,7 +110,7 @@ exports['update pic unsuccessful'] = function(test) {
 // Test for a successful email change
 exports['update email successful'] = function(test) {
     test.expect(1);
-    users.update_pic('username', 'bad_pic_url', function(success) {
+    users.update_pic('username', 'email', function(success) {
         test.ok(!success);
         test.done();
     });
@@ -119,7 +119,7 @@ exports['update email successful'] = function(test) {
 // Test for an unsuccessful email change
 exports['update email unsuccessful'] = function(test) {
     test.expect(1);
-    users.update_pic('username', 'bad_pic_url', function(success) {
+    users.update_pic('username', 'bad_email', function(success) {
         test.ok(!success);
         test.done();
     });
