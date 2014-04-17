@@ -39,4 +39,19 @@ exports['cleanup'] = function(test) {
     });
 };
 
+// Test post_new_video
+exports['post new video'] = function(vidoes){
+    test.expect(1);
+    videos.post_new_video('username','url','length','title','view_count',
+                          'shares_needed','likes','favorites','flagged',
+                          'category','promoted', function(success){
+        test.okay(success);
+        test.done();
+    });
+};
+
+
+
+
+
 
