@@ -8,13 +8,13 @@ var db = mongojs('spreadapp', ['posts']);
 module.exports.add_post = function(username, timestamp, subject, body, callback) {
     db.posts.insert({username:username, timestamp:timestamp, subject:subject, body:body}, function(error) {
         if (error) throw error;
+        callback();
     });
-    callback();
 };
 
 // Retrieve posts
-module.exports.retrieve_posts = function (username, timestamp, callback) {
-    db.posts.find({username:username, timestamp:timestamp}, function(error,posts) {
+module.exports.retrieve_posts = function (username, callback) {
+    db.posts.find({username:username}, function(error,posts) {
         if (error) throw error;
         callback(posts);
     });
@@ -24,8 +24,8 @@ module.exports.retrieve_posts = function (username, timestamp, callback) {
 module.exports.edit_post = function(username, timestamp, newsubject, newbody, callback) {
     db.posts.update({username:username,timestamp:timestamp},{$set: {subject:newsubject, body:newbody}}, function(error) {
         if (error) throw error;
+        callback();
     });
-    callback();
 };
 
 // Delete a post
