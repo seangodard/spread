@@ -86,17 +86,18 @@ Professor: Dr. Lisa Torrey
 
 	test code? no
 
-	comments:
+	comments: 
 
 ------------------------------------------------------------------------
 
 - post_new_video
 
-	status: in progress, Jose
+	status: finished, Jose
 
-	test code? no
+	test code? yes
 
-	comments:
+	comments: need to modify this later to make it work without
+	findandmodify.
 
 ------------------------------------------------------------------------
 
@@ -204,17 +205,18 @@ Professor: Dr. Lisa Torrey
 
 - retrieve_inbox
 
-	status: not started
+	status: In Progress, Jose
 
 	test code? no
 
-	comments:
+	comments: retrieves all the messages that have the username as
+	both the recipient and the sender
 
 ------------------------------------------------------------------------
 
 - send_message 
 
-	status: not started
+	status: In progress, Jose
 
 	test code? no
 
@@ -224,7 +226,7 @@ Professor: Dr. Lisa Torrey
 
 - viewed
 
-	status: not started
+	status: In progress, Jose
 
 	test code? no
 
@@ -234,7 +236,7 @@ Professor: Dr. Lisa Torrey
 
 - delete_message_recip 
 
-	status: not started
+	status: In progress, Jose
 
 	test code? no
 
@@ -245,7 +247,7 @@ Professor: Dr. Lisa Torrey
 
 - delete_message_sender 
 
-	status: not started
+	status: In progress, Jose
 
 	test code? no
 
