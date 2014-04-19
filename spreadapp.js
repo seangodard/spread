@@ -27,5 +27,5 @@ app.get('/register', require('./routes/registration'));
 
 // app.get('*', require('./routes/error'));
 
-app.listen(8080);
+app.listen(8085);
 console.log('Server is up.');

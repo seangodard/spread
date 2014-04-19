@@ -1,15 +1,25 @@
 /* Reset */
-p,h1,h2,ul,a {
+p,h1,h2,ul,a{
     margin: 0;
     padding: 0;
+    padding-left: 0;
     /*color inherited from the parent instead of the default*/
     color: inherit;
 }
 
 
-
 /* Small screen changes*/
+nav ul li {
+    list-style-type: none;
+    display: inline;
+}
 
+fieldset * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
 
 
 /* Medium screen changes */
@@ -20,9 +30,7 @@ p,h1,h2,ul,a {
 }
 
 /* Large screen changes */
-@media screen and (min-width: 800px) {
-    
-    
+@media screen and (min-width: 800px) {    
     
     
 }
