@@ -1,36 +1,95 @@
 /* Reset */
-p,h1,h2,ul,a{
+p,h1,h2,ul,a, body {
     margin: 0;
     padding: 0;
     padding-left: 0;
     /*color inherited from the parent instead of the default*/
     color: inherit;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* Small screen changes*/
+
+/*Header Stuff*/
+.headrow {
+    background-color: rgb(25,25,25);
+    height: 75px;
+}
+
+.logo {
+    float:left;
+}
+
+nav {
+    float: left;
+}
+
+nav ul {
+    margin-top: 35px;
+}
+
 nav ul li {
     list-style-type: none;
     display: inline;
+    margin-right: 1%;
+    color: rgb(225,225,225);
+}
+
+a {
+    text-decoration: none;
+}
+
+/*Body Stuff*/
+
+.mainbody {
+    clear: both;
+}
+
+body {
+    background-color: rgb(250,250,250);
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+fieldset {
+    border: 1px solid;
+    margin-bottom: 7px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 fieldset * {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
+    margin-bottom: 10px;
+}
+
+.submit {
+    text-align: center; 
 }
 
 
+/*Footer*/
+footer {
+    margin-top: 7%;
+    clear: both;
+    text-align: center;
+    font-size: small;
+}
+
 /* Medium screen changes */
 @media screen and (min-width: 480px) {
-    
+        
 
 
 }
 
 /* Large screen changes */
-@media screen and (min-width: 800px) {    
+@media screen and (min-width: 800px) {
+
+    
     
     
 }

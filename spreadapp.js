@@ -15,7 +15,7 @@ app.use(express.cookieParser());
 app.use(express.session({secret:'ItsASecret'}));
 
 //app.post('/', require('./routes/home'));
-app.get('/register', require('./routes/registration'));
+app.get('/registration', require('./routes/registration'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
 
