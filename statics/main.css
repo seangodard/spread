@@ -13,15 +13,30 @@ p,h1,h2,ul,a, body {
 /*Header Stuff*/
 .headrow {
     background-color: rgb(25,25,25);
-    height: 75px;
+    overflow: auto;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
 }
 
 .logo {
     float:left;
 }
 
+.searchbox {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+    background-color: rgb(100,100,100);
+}
+
 nav {
-    float: left;
+    float: right;
+    clear: none;
 }
 
 nav ul {
@@ -31,7 +46,7 @@ nav ul {
 nav ul li {
     list-style-type: none;
     display: inline;
-    margin-right: 1%;
+    padding-right: 10px;
     color: rgb(225,225,225);
 }
 
@@ -42,6 +57,7 @@ a {
 /*Body Stuff*/
 
 .mainbody {
+    float: none;
     clear: both;
 }
 
@@ -81,15 +97,25 @@ footer {
 
 /* Medium screen changes */
 @media screen and (min-width: 480px) {
-        
+    /*Header Stuff*/
+    
 
+    /*Body Stuff*/
+    
+    /*Footer*/
 
 }
 
 /* Large screen changes */
 @media screen and (min-width: 800px) {
+    /*Header Stuff*/
+    #logo {
+        width: 75px;
+        height: 75px;
+    }
 
+    /*Body Stuff*/
     
-    
+    /*Footer*/
     
 }
