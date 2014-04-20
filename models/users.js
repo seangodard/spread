@@ -8,7 +8,7 @@ var db = mongojs('spreadapp', ['users']);
 // Add User: username, password, firstname, lastname, email
 // Optional: promoted video url, pic, bio
 module.exports.adduser = function(username, password, first_name, last_name, email,
-                                  promoted_video_url, pic_url, bio, callback) {    
+                                  promoted_video_url, picture, bio, callback) {    
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
@@ -18,15 +18,17 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
             /*field to change*/
             update: {$setOnInsert:{username:username, password:hash, first_name:first_name,
                     last_name:last_name, email:email, promoted_video_url:promoted_video_url,
-                    pic_url:pic_url, bio:bio}},
+                    picture:picture, bio:bio}},
             /*says to return modified version*/
             new: true,
             /*create a new document if there wasn't one*/
             upsert: true
             
-        }, function(error, user) {
+        },  function(error, user) {
             if (error) throw error;
 
+            callback(user.password === hash);
+        
         });    
     });
 };
@@ -143,13 +145,14 @@ module.exports.update_email = function(username, new_email, callback) {
     });
 };
 
-
+/*
 module.exports.retrieve_users = function(username, callback) {
     db.users.findOne(username:username, function(error) {
     });
                      
                      
 });
+*/
 // Delete all users in collection
 module.exports.deleteAll = function(callback) {
     db.users.remove({}, function(error) {
