@@ -14,11 +14,17 @@ app.use(express.static(__dirname+'/statics'));
 app.use(express.cookieParser());
 app.use(express.session({secret:'ItsASecret'}));
 
-//app.post('/', require('./routes/home'));
+// Get Routes
+app.get('/', require('./routes/home'));
 app.get('/registration', require('./routes/registration'));
+app.get('/myspread', require('./routes/myspread'));
+
+// Post Routes
+
+
+//app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
-
 //app.post('/profile', require('./routes/profile'));
 //app.post('/history', require('./routes/history'));
 //app.post('/manageaccount', require('./routes/manageaccount'));
@@ -27,5 +33,6 @@ app.get('/registration', require('./routes/registration'));
 
 // app.get('*', require('./routes/error'));
 
-app.listen(8085);
-console.log('Server is up.');
+var port = 8086;
+app.listen(port);
+console.log('Server is up on port '+port+".");
