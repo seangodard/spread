@@ -1,0 +1,121 @@
+/* Reset */
+p,h1,h2,ul,a, body {
+    margin: 0;
+    padding: 0;
+    padding-left: 0;
+    /*color inherited from the parent instead of the default*/
+    color: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Small screen changes*/
+
+/*Header Stuff*/
+.headrow {
+    background-color: rgb(25,25,25);
+    overflow: auto;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+}
+
+.logo {
+    float:left;
+}
+
+.searchbox {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+    background-color: rgb(100,100,100);
+}
+
+nav {
+    float: right;
+    clear: none;
+}
+
+nav ul {
+    margin-top: 35px;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding-right: 10px;
+    color: rgb(225,225,225);
+}
+
+a {
+    text-decoration: none;
+}
+
+/*Body Stuff*/
+
+.mainbody {
+    float: none;
+    clear: both;
+}
+
+body {
+    background-color: rgb(250,250,250);
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+fieldset {
+    border: 1px solid;
+    margin-bottom: 7px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+fieldset * {
+    margin-bottom: 10px;
+}
+
+.submit {
+    text-align: center; 
+}
+
+
+/*Footer*/
+footer {
+    margin-top: 7%;
+    clear: both;
+    text-align: center;
+    font-size: small;
+}
+
+/* Medium screen changes */
+@media screen and (min-width: 480px) {
+    /*Header Stuff*/
+    
+
+    /*Body Stuff*/
+    
+    /*Footer*/
+
+}
+
+/* Large screen changes */
+@media screen and (min-width: 800px) {
+    /*Header Stuff*/
+    #logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    /*Body Stuff*/
+    
+    /*Footer*/
+    
+}

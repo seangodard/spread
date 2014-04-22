@@ -6,21 +6,33 @@ var app = express();
 
 // Configure the server
 app.set('view engine', 'ejs');
-app.set('views', '/spread/views');
+app.set('views', __dirname+'/views');
 app.use(express.urlencoded({limit:'1kb'})); // default for every route/ prevent form inputs over 1 kb
-app.use(express.static('/spread/statics'));
+app.use(express.static(__dirname+'/statics'));
 
+// Enable sessions
+app.use(express.cookieParser());
+app.use(express.session({secret:'ItsASecret'}));
+
+// Get Routes
 app.get('/', require('./routes/home'));
-app.get('/register', require('./routes/registration'));
-app.get('/searchresults', require('./routes/search'));
-
-app.get('/profile', require('./routes/profile'));
-app.get('/history', require('./routes/history'));
-app.get('/manageaccount', require('./routes/manageaccount'));
-app.get('/inbox', require('./routes/inbox'));
+app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 
-app.get('*', require('./routes/error'));
+// Post Routes
 
-app.listen(8080);
-console.log('Server is up.');
+
+//app.post('/', require('./routes/home'));
+//app.post('/register', require('./routes/registration'));
+//app.post('/searchresults', require('./routes/search'));
+//app.post('/profile', require('./routes/profile'));
+//app.post('/history', require('./routes/history'));
+//app.post('/manageaccount', require('./routes/manageaccount'));
+//app.post('/inbox', require('./routes/inbox'));
+//app.post('/myspread', require('./routes/myspread'));
+
+// app.get('*', require('./routes/error'));
+
+var port = 8086;
+app.listen(port);
+console.log('Server is up on port '+port+".");

@@ -8,25 +8,28 @@ var db = mongojs('spreadapp', ['users']);
 // Add User: username, password, firstname, lastname, email
 // Optional: promoted video url, pic, bio
 module.exports.adduser = function(username, password, first_name, last_name, email,
-                                  promoted_video_url, pic_url, bio, callback) {    
+                                  promoted_video_url, picture, bio, callback) {    
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
         // Find and create or modify a new or existing user
         db.users.findAndModify({
-            query: {username:username},/*search criteria*/
+            /*search criteria*/
+            query: {username:username},
             /*field to change*/
             update: {$setOnInsert:{username:username, password:hash, first_name:first_name,
                     last_name:last_name, email:email, promoted_video_url:promoted_video_url,
-                    pic_url:pic_url, bio:bio}},
+                    picture:picture, bio:bio}},
             /*says to return modified version*/
             new: true,
             /*create a new document if there wasn't one*/
             upsert: true
             
-        }, function(error, user) {
+        },  function(error, user) {
             if (error) throw error;
 
+            callback(user.password === hash);
+        
         });    
     });
 };
@@ -51,34 +54,26 @@ module.exports.login = function(username, password, callback) {
 };
 
 // Change Password
-// ******** not finished, copied and pasted, needs test code too
-module.exports.change_password = function(username, password, new_password, callback) {  
+module.exports.change_password = function(username, password, new_password, callback) {
     
-    // Compare the user's password to their password in the database.
-    // If there's a match, return true
-    bcrypt.compare(password, new_password, function(error, success) {
+    bcrypt.hash(new_password, 10, function(error, hash_new) {
         if (error) throw error;
         
-        success(true);
-    });
-    
-    bcrypt.hash(new_password, 10, function(error, hash) {
-        if (error) throw error;
-            
-        // Find and modify an existing user's password
-        db.users.findAndModify({
-            /*search criteria*/
-            query: {username:username},
-            /*field to change*/
-            update: {$setOnInsert:{password:hash}},
-            /*says to return modified version*/
-            new: true,
-            /*create a new document if there wasn't one*/
-            upsert: true
-            
-        }, function(error, user) {
+        db.users.findOne({username:username}, function(error, user) {
             if (error) throw error;
             
+            bcrypt.compare(user.password, hash_new, function(error, success) {
+                if (error) throw error;
+        
+                if (success) {
+                    user.password = hash_new;
+                    db.users.save(user, function(error){
+                        if (error) throw error;
+                    });
+                };
+            });
+            
+            callback(user.password === hash_new);
         });
     });
 };
@@ -87,39 +82,38 @@ module.exports.change_password = function(username, password, new_password, call
 module.exports.update_bio = function(username, new_bio, callback) {    
 
     // Find and modify an existing user's bio
-    db.users.findAndModify({
-        /*search criteria*/
-        query: {username:username},
-        /*field to change*/
-        update: {$setOnInsert:{bio:new_bio}},
-        /*says to return modified version*/
-        new: true,
-        /*create a new document if there wasn't one*/
-        upsert: true
+    db.users.findOne({username:username}, function(error, user) {
+        if (error) throw error;
         
-        }, function(error, user) {
-            if (error) throw error;   
+        user.bio = new_bio;
+        
+        db.users.save(user, function(error){
+            if (error) throw error;
+            console.log('\n \n \n \n ');
+            callback(user.bio === new_bio);
+        });
     });
 };
 
 // Update profile picture
-module.exports.update_pic_url = function(username, new_pic_url, callback) {    
+module.exports.update_picture = function(username, new_picture, callback) {    
 
     // Find and modify an existing user's bio
     db.users.findAndModify({
         /*search criteria*/
         query: {username:username},
         /*field to change*/
-        update: {$setOnInsert:{pic_url:new_pic_url}},
+        update: {$setOnInsert:{picture:new_picture}},
         /*says to return modified version*/
         new: true,
         /*create a new document if there wasn't one*/
-        upsert: false
+        upsert: true
         
         }, function(error, user) {
+            
             if (error) throw error;
             
-            callback(user.pic_url == new_pic_url);  
+            callback(user.picture === new_picture);  
     });
 };
 
@@ -135,21 +129,16 @@ module.exports.update_email = function(username, new_email, callback) {
         /*says to return modified version*/
         new: true,
         /*create a new document if there wasn't one*/
-        upsert: false // ???????????????/
+        upsert: true
         
         }, function(error, user) {
             if (error) throw error;
+            
+            callback(user.email === new_email);
                
     });
 };
 
-
-module.exports.retrieve_users = function(username, callback) {
-    db.users.findOne(username:username, function(error) {
-    });
-                     
-                     
-});
 // Delete all users in collection
 module.exports.deleteAll = function(callback) {
     db.users.remove({}, function(error) {

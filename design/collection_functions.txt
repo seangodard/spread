@@ -33,7 +33,7 @@ Professor: Dr. Lisa Torrey
 	
 	status: in progress, Tom
 
-	test code? no
+	test code? yes, not complete
 
 	comments:
 
@@ -43,7 +43,7 @@ Professor: Dr. Lisa Torrey
 
 	status: in progress, Tom
 
-	test code? no
+	test code? yes, not complete
 
 	comments:
 
@@ -53,7 +53,7 @@ Professor: Dr. Lisa Torrey
 
 	status: in progress, Tom
 
-	test code? no
+	test code? yes, not complete
 
 	comments:
 
@@ -63,7 +63,7 @@ Professor: Dr. Lisa Torrey
 
 	status: in progress, Tom
 
-	test code? no
+	test code? yes, not complete
 
 	comments:
 
@@ -71,9 +71,9 @@ Professor: Dr. Lisa Torrey
 
 - delete_all
 
-	status: in progress, Matt
+	status: 
 
-	test code? no
+	test code? 
 
 	comments:
 

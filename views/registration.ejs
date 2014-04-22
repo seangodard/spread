@@ -1,22 +1,26 @@
-<% include chunks/header %>
+<% include chunks/header_standard %>
 
 <!-- forms for registration: *username, *password, *email, first-name, last_name,  -->
-<form method="post" action="/registration">\
-    <legend>Register an Account</legend>
+<div class="mainbody">
+    <h1>Account Registration</h1>
+    <form method="post" action="/registration">
         <fieldset>
-            <input type="text" name="username" placeholder="*Name" required>\
-            <input type="text" name="password" placeholder="*Password" required>\
-            <input type="text" name="email" placeholder="*Email" required>\
-            <input type="text" name="first_name" placeholder="*First Name" required>\
-            <input type="text" name="last_name" placeholder="*Last Name" required>\
-            <input type="text" name="promoted_video_url" placeholder="Promoted Video URL">\
-
-            <!-- !!!!need to find out how to upload picture files from computer!!!! -->
-            
-            <input type="text" name="pic" placeholder="Profile Picture URL">\
-            <input type="text" name="bio" placeholder="Add a brief bio about yourself">\
-            <input type="submit">\
+            <legend>Required Fields</legend>
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="User Name" required>
+            <input type="text" name="password" placeholder="Password" required>                
+            <input type="text" name="email" placeholder="Email" required>
         </fieldset>
-</form>
+        <fieldset>
+            <label for="pictureinput">Profile Picture</label>
+            <input id="pictureinput" type="file" name="profile_pic"/>
+            <textarea name="bio" placeholder="Please tell us a bit about you."></textarea>
+        </fieldset>
+        <div class="submit">
+            <input type="submit">
+        </div>
+    </form>
+</div>
 
 <% include chunks/footer %>

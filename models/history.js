@@ -13,19 +13,48 @@ module.exports.add_item = function(username, timestamp, url, callback) {
 };
 
 // Retrieve users history within a date range
-module.exports.retrieve_history = function(username, startrange, endrange, callback) {
+module.exports.retrieve_range_history = function(username, startrange, endrange, callback) {
     db.history.find({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
         if (error) throw error;
         callback(history);
     });
 };
 
-// Delete entire history
-module.exports.add_history = function() {
-    
+// Retrieve all users history
+module.exports.retrieve_all_history = function(username, callback) {
+    db.history.find({username:username}, function(error, history) {
+        if (error) throw error;
+        callback(history);
+    });
 };
 
-// Delete all posts in collection
+// Delete entire history for a user
+module.exports.delete_userhistory = function(username, callback) {
+    db.history.remove({username:username}, function(error) {
+        if (error) throw error;
+        callback();
+    });
+};
+
+// Delete a list of items from a user's history-----incomplete
+module.exports.delete_userhistory_items = function(username, arrayOfDatesToDelete, callback) {
+    arrayOfDatesToDelete.forEach(function(date) {
+        db.history.remove({username:username, timestamp: date}, function(error) {
+            if (error) throw error;
+        });
+    });
+    callback();
+};
+
+// Delete a range of items from a user's history
+module.exports.delete_userhistory_range = function(username, startrange, endrange, callback) {
+    db.history.remove({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error) {
+        if (error) throw error;
+        callback();
+    });
+};
+
+// Delete all history in collection
 module.exports.deleteAll = function(callback) {
     db.history.remove({}, function(error) {
         if (error) throw error;
