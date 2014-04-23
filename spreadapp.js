@@ -20,7 +20,7 @@ app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 
 // Post Routes
-
+app.post('/registration', require('./routes/registration'));
 
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));

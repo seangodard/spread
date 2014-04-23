@@ -4,5 +4,7 @@ var validator = require('validator');
 
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
 module.exports = function(request,response) {
-    response.render('home', {});
+    var loggedin_username = request.session.username;
+    
+    response.render('home', {username:loggedin_username});
 };
