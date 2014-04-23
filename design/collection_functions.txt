@@ -205,9 +205,9 @@ Professor: Dr. Lisa Torrey
 
 - retrieve_inbox
 
-	status: In Progress, Jose
+	status: Done, Jose
 
-	test code? no
+	test code? yes
 
 	comments: retrieves all the messages that have the username as
 	both the recipient and the sender
@@ -216,9 +216,9 @@ Professor: Dr. Lisa Torrey
 
 - send_message 
 
-	status: In progress, Jose
+	status: Done, Jose
 
-	test code? no
+	test code? yes
 
 	comments: adds new message to messages collection
 
@@ -226,9 +226,9 @@ Professor: Dr. Lisa Torrey
 
 - viewed
 
-	status: In progress, Jose
+	status: Done, Jose
 
-	test code? no
+	test code? yes
 
 	comments: checks if the message has been read by its recipient
 
@@ -236,9 +236,9 @@ Professor: Dr. Lisa Torrey
 
 - delete_message_recip 
 
-	status: In progress, Jose
+	status: Done, Jose
 
-	test code? no
+	test code? yes
 
 	comments: deletes message only for recipient, sender can 
 		    still view it
@@ -247,9 +247,9 @@ Professor: Dr. Lisa Torrey
 
 - delete_message_sender 
 
-	status: In progress, Jose
+	status: Done, Jose
 
-	test code? no
+	test code? yes
 
 	comments: delete message only for sender, recipient can 
 		    still view it
