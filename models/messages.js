@@ -9,7 +9,7 @@ var db = mongojs('spreadapp', ['messages']);
 module.exports.retrieve_inbox = function(username, callback){
     
     // find a collection in which the username is the sender or the recipient
-    db.messages.find({$or:[{sender:username},{recipient:username}]},function(error,inbox){
+    db.messages.find({$or:[{sender:username,owner:username},{recipient:username,owner:username}]},function(error,inbox){
         if (error) throw error;
         callback(inbox);
     });
@@ -39,10 +39,10 @@ module.exports.send_message = function(username,recipient,subject,timestamp,body
 // checks if the messages has been read by its recipient
 // returns true or false
 module.exports.viewed = function(username,recipient,timestamp, callback){
-    
-    db.findOne({sender:username,recipient:recipinet,timestamp:timestamp},
-        function(error,view){ if (error) throw error;
-        
+    //console.log("test0");
+    db.messages.findOne({sender:username,recipient:recipient,timestamp:timestamp},function(error,view){
+        if (error) throw error;
+        //console.log("test1");
         if (view.viewed_by_recipient === true){
             callback(true);
         } else {
@@ -56,15 +56,18 @@ module.exports.viewed = function(username,recipient,timestamp, callback){
 // returns true if the message was found and deleted and false if it was not found
 module.exports.delete_message_recip = function(username,sender,timestamp, callback){
     
-    db.findOne({sender:sender,recipient:username,timestamp:timestamp},function(error, message){
+    db.messages.findOne({sender:sender,recipient:username,timestamp:timestamp,owner:username},function(error, message){
         if (error) throw error;
-        
+        //console.log(message);
         if (message){
-            db.remove({sender:sender,recipient:username,timestamp:timestamp},function(error){
-            if (error) throw error; 
+            //console.log("test0");
+            db.messages.remove({sender:sender,recipient:username,timestamp:timestamp,owner:username},function(error){
+                if (error) throw error; 
             });
+            //console.log("test1");
             callback(true);
         } else {
+            //console.log("test2");
             callback(false);
         }; 
     });
@@ -73,14 +76,14 @@ module.exports.delete_message_recip = function(username,sender,timestamp, callba
 // delete_message_sender: Takes a username as the sender, a recipient, subject and timestamp
 // deletes a message only for the sender, so the recipient can still view it
 // returns true if the message was found and deleted and false if it was not found
-module.exports.delete_message_recip = function(username,sender,timestamp, callback){
+module.exports.delete_message_sender = function(username,recipient,timestamp, callback){
     
-    db.findOne({sender:sender,recipient:username,timestamp:timestamp},function(error, message){
+    db.messages.findOne({sender:username,recipient:recipient,timestamp:timestamp,owner:username},function(error, message){
         if (error) throw error;
         
         if (message){
-            db.remove({sender:sender,recipient:username,timestamp:timestamp},function(error){
-            if (error) throw error; 
+            db.messages.remove({sender:username,recipient:recipient,timestamp:timestamp,owner:username},function(error){
+                if (error) throw error; 
             });
             callback(true);
         } else {
