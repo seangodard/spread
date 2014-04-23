@@ -27,7 +27,7 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
             
         },  function(error, user) {
             if (error) throw error;
-
+            
             callback(user.password === hash);
         
         });    

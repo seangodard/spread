@@ -78,6 +78,11 @@ fieldset {
     margin-right: auto;
 }
 
+#error {
+    text-align: center;
+    color: rgb(250,0,0);
+}
+
 fieldset * {
     margin-bottom: 10px;
 }

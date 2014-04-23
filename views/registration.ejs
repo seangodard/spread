@@ -1,24 +1,26 @@
-<% include chunks/header_standard %>
+<% include chunks/header %>
 
-<!-- forms for registration: *username, *password, *email, first-name, last_name,  -->
 <div class="mainbody">
     <h1>Account Registration</h1>
-    <form method="post" action="/registration">
+    <form method="post" action="/register">
         <fieldset>
             <legend>Required Fields</legend>
-            <input type="text" name="first_name" placeholder="First Name" required>
-            <input type="text" name="last_name" placeholder="Last Name" required>
-            <input type="text" name="username" placeholder="User Name" required>
-            <input type="text" name="password" placeholder="Password" required>                
-            <input type="text" name="email" placeholder="Email" required>
+            <input id="first_name" type="text" name="first_name" placeholder="First Name" required>
+            <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
+            <input id="username" type="text" name="username" placeholder="User Name" required>
+            <input id="password" type="text" name="password" placeholder="Password" required>                
+            <input id="email" type="text" name="email" placeholder="Email" required>
         </fieldset>
         <fieldset>
-            <label for="pictureinput">Profile Picture</label>
-            <input id="pictureinput" type="file" name="profile_pic"/>
-            <textarea name="bio" placeholder="Please tell us a bit about you."></textarea>
+            <label for="picture">Profile Picture</label>
+            <input id="picture" type="file" name="profile_pic"/>
+            <textarea id="bio" name="bio" placeholder="Please tell us a bit about you."></textarea>
         </fieldset>
+        <% if (error) { %>
+            <p id="error"><%= error %></p>
+        <% } %>
         <div class="submit">
-            <input type="submit">
+            <input id="register_button" type="submit">
         </div>
     </form>
 </div>

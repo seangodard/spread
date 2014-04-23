@@ -18,9 +18,10 @@ app.use(express.session({secret:'ItsASecret'}));
 app.get('/', require('./routes/home'));
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
+app.get('/logout', require('./routes/logout'));
 
 // Post Routes
-
+app.post('/register', require('./routes/register'));
 
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
