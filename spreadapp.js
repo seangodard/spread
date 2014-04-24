@@ -19,6 +19,7 @@ app.get('/', require('./routes/home'));
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
+app.get('/inbox', require('./routes/inbox'));
 
 // Post Routes
 app.post('/register', require('./routes/register'));
