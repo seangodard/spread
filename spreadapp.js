@@ -4,6 +4,9 @@ var express = require('express');
 // Create a server
 var app = express();
 
+// Server Port number
+var port = 8086;
+
 // Configure the server
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
@@ -18,9 +21,10 @@ app.use(express.session({secret:'ItsASecret'}));
 app.get('/', require('./routes/home'));
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
+app.get('/logout', require('./routes/logout'));
 
 // Post Routes
-
+app.post('/register', require('./routes/register'));
 
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
@@ -33,6 +37,5 @@ app.get('/myspread', require('./routes/myspread'));
 
 // app.get('*', require('./routes/error'));
 
-var port = 8086;
 app.listen(port);
 console.log('Server is up on port '+port+".");

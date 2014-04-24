@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<% if (username) { %>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/main.css">
+        <div class="headrow">
+            <div class="logo">
+                <a href="/"><img id ="logohome" src="/logo_small.png" alt="Home"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a id="profile" href="/profile">Profile</a></li>
+                    <li><a id="myspread" href="/myspread">MySpread</a></li>
+                    <li><a id="logout" href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="searchbox">
+                <input id="search_querry" type="text" name="search" placeholder="Search" required>
+            </div>
+        </div>
+<% } else { %>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/main.css">
+        <div class="headrow">
+            <div class="logo">
+                <a href="/"><img id ="logohome" src="/logo_small.png" alt="Home"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a id="login" href="/login">Login</a></li>
+                    <li><a id="register" href="/registration">Register</a></li>
+                </ul>
+            </nav>
+            <div class="searchbox">
+                <input id="search_querry" type="text" name="search" placeholder="Search" required>
+            </div>
+        </div>
+<% } %>
+    </head>
+    <body>
