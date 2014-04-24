@@ -24,8 +24,7 @@ module.exports = function(request,response) {
         // Unsuccessful registartion redirects back to registation page with an error
         else {
             request.session.error = 'Username '+name+' is not available.';
-            response.redirect('registration');
-            delete request.session.error;
+            response.redirect('/registration');
         }            
     });  
 };

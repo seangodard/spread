@@ -4,6 +4,9 @@ var express = require('express');
 // Create a server
 var app = express();
 
+// Server Port number
+var port = 8086;
+
 // Configure the server
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
@@ -35,6 +38,5 @@ app.post('/register', require('./routes/register'));
 
 // app.get('*', require('./routes/error'));
 
-var port = 8086;
 app.listen(port);
 console.log('Server is up on port '+port+".");

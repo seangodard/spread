@@ -9,14 +9,15 @@ module.exports = function(request,response) {
     var loggedin_username = request.session.username;
     var error = request.session.error;
     
+    
     // Redirect a logged in user to home
     if (loggedin_username) {
         response.redirect('/');
     }
     // Render page
     else {
-        console.log('test');
         response.render('registration',{error:error,username:loggedin_username});
+        delete request.session.error;
     }
     
 };
