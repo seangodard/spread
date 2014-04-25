@@ -8,9 +8,15 @@ p,h1,h2,ul,a, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
+
+
+
+
 /* Small screen changes*/
 
-/*Header Stuff*/
+/*Header Stuff-Small*/
 .headrow {
     background-color: rgb(25,25,25);
     overflow: auto;
@@ -54,7 +60,7 @@ a {
     text-decoration: none;
 }
 
-/*Body Stuff*/
+/*Body Stuff-Small*/
 
 .mainbody {
     float: none;
@@ -91,8 +97,37 @@ fieldset * {
     text-align: center; 
 }
 
+/*Video Stuff - Small*/
+#main_video_frame {
+    margin-top: 5%;
+    text-align: center;
+    display: block;
+}
 
-/*Footer*/
+#primary_video {
+    height: 169px;
+    width: 300px;
+}
+
+#next_videos {
+    display: table;
+    margin: 0 auto;
+}
+
+#second_video_small, #third_video_small {
+    background-color: rgb(250,0,0);
+    margin: 10px;
+    height: 76px;
+    width: 135px;
+    float: left;
+}
+
+#like_etc_options {}
+
+#category_bar {}
+
+
+/*Footer - Small*/
 footer {
     margin-top: 7%;
     clear: both;
@@ -100,27 +135,58 @@ footer {
     font-size: small;
 }
 
+
+
+
+
+
+
 /* Medium screen changes */
 @media screen and (min-width: 480px) {
-    /*Header Stuff*/
+    /*Header Stuff - Medium*/
     
 
-    /*Body Stuff*/
+    /*Body Stuff - Medium*/
+    /*Video Stuff-Medium*/
+    #primary_video {
+        height: 315px;
+        width: 560px;
+    }
     
-    /*Footer*/
+    #second_video_small, #third_video_small {
+        height: 149px;
+        width: 265px;
+    }
+
+    /*Footer-Medium*/
 
 }
 
+
+
+
+
+
+
 /* Large screen changes */
 @media screen and (min-width: 800px) {
-    /*Header Stuff*/
+    /*Header Stuff - Large*/
     #logohome {
         width: 75px;
         height: 75px;
     }
 
-    /*Body Stuff*/
+    /*Body Stuff - Large*/
+    /*Video Specific - Large*/
+    #primary_video {
+        height: 360px;
+        width: 640px;
+    }
+    #second_video_small, #third_video_small {
+        height: 172px;
+        width: 305px;
+    }
     
-    /*Footer*/
+    /*Footer - Large*/
     
 }
