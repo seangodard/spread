@@ -122,7 +122,37 @@ fieldset * {
     float: left;
 }
 
-#like_etc_options {}
+#like_etc_options {
+    margin: 10px;
+}
+
+#like {
+    background: url("/like.png") no-repeat center center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: transparent;
+}
+
+#unlike {
+    background: url("/unlike.png") no-repeat center center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: transparent;
+}
+
+#favorite {
+    background: url("/favorite.png") no-repeat center center;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: transparent;
+}
+
 
 #category_bar {}
 
