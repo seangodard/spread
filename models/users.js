@@ -27,7 +27,7 @@ module.exports.adduser = function(username, password, first_name, last_name, ema
             
         },  function(error, user) {
             if (error) throw error;
-
+            
             callback(user.password === hash);
         
         });    
@@ -53,27 +53,41 @@ module.exports.login = function(username, password, callback) {
     });
 };
 
-// Change Password
-module.exports.change_password = function(username, password, new_password, callback) {
+// Change password
+module.exports.change_password = function(username, old_password, new_password, callback) {
     
+    // Hash the new password
     bcrypt.hash(new_password, 10, function(error, hash_new) {
         if (error) throw error;
         
-        db.users.findOne({username:username}, function(error, user) {
+        // Hash the old password
+        bcrypt.hash(old_password, 10, function(error, hash_old) {
             if (error) throw error;
+            console.log("1 entered old password: "+hash_old);
             
-            bcrypt.compare(user.password, hash_new, function(error, success) {
+            // Find the user using their username
+            db.users.findOne({username:username}, function(error, user) {
                 if (error) throw error;
-        
-                if (success) {
+                console.log('username: '+username);
+                
+                // compare the hashed new password with the current hashed password
+                bcrypt.compare(user.password, hash_old, function(error, success) {
+                    if (error) throw error;
+                    console.log('2 old password: '+user.password);
+                    console.log('3 entered old password: '+hash_old);
+            
+                    // change the user's password to the new hashed password
                     user.password = hash_new;
+                    console.log('current password after change: '+user.password);
+                    // save the user
                     db.users.save(user, function(error){
                         if (error) throw error;
-                    });
-                };
+                        
+                    });  
+                    
+                });
+                callback(user.password === hash_new);
             });
-            
-            callback(user.password === hash_new);
         });
     });
 };
@@ -88,8 +102,9 @@ module.exports.update_bio = function(username, new_bio, callback) {
         user.bio = new_bio;
         
         db.users.save(user, function(error){
+            
             if (error) throw error;
-            console.log('\n \n \n \n ');
+            
             callback(user.bio === new_bio);
         });
     });
@@ -98,7 +113,7 @@ module.exports.update_bio = function(username, new_bio, callback) {
 // Update profile picture
 module.exports.update_picture = function(username, new_picture, callback) {    
 
-    // Find and modify an existing user's bio
+    // Find and modify an existing user's picture
     db.users.findAndModify({
         /*search criteria*/
         query: {username:username},
@@ -107,7 +122,7 @@ module.exports.update_picture = function(username, new_picture, callback) {
         /*says to return modified version*/
         new: true,
         /*create a new document if there wasn't one*/
-        upsert: true
+        upsert: false
         
         }, function(error, user) {
             
@@ -129,9 +144,10 @@ module.exports.update_email = function(username, new_email, callback) {
         /*says to return modified version*/
         new: true,
         /*create a new document if there wasn't one*/
-        upsert: true
+        upsert: false
         
         }, function(error, user) {
+            
             if (error) throw error;
             
             callback(user.email === new_email);

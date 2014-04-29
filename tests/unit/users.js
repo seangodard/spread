@@ -13,7 +13,7 @@ exports['setup'] = function(test) {
 // Test for a successful registration
 exports['register a user (sucessful)'] = function(test) {
     test.expect(1);
-    users.adduser('username', 'password','first_name','last_name', 'email', 'promoted_video_url', 'picture', 'bio', function(success) {
+    users.adduser('username', 'password', 'first_name','last_name', 'email', 'promoted_video_url', 'picture', 'bio', function(success) {
         test.ok(success);
         test.done();
     });
@@ -22,7 +22,7 @@ exports['register a user (sucessful)'] = function(test) {
 // Test for an unsuccessful registration
 exports['register a user (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.adduser('username', 'password','first_name','last_name', 'email', 'promoted_video_url', 'picture', 'bio', function(success) {
+    users.adduser('username', 'password', 'first_name','last_name', 'email', 'promoted_video_url', 'picture', 'bio', function(success) {
         test.ok(!success);
         test.done();
     });
@@ -91,7 +91,7 @@ exports['update bio (successful)'] = function(test) {
 // Test for an unsuccessful bio change
 exports['update bio (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.update_bio('badusername', 'new_bio', function(success) {
+    users.update_bio('bad_username', 'new_bio', function(success) {
         test.ok(!success);
         test.done();
     });
@@ -99,19 +99,20 @@ exports['update bio (unsuccessful)'] = function(test) {
 
 // ====================================UPDATE PICTURE========================================
 
-// Test for a successful pic change
-exports['update picture successful'] = function(test) {
+// Test for a successful picture change
+exports['update picture (successful)'] = function(test) {
     test.expect(1);
-    users.update_picture('username', 'pic_url', function(success) {
+    users.update_picture('username', 'new_picture', function(success) {
         test.ok(success);
         test.done();
     });
 };
 
-// Test for an unsuccessful pic change
-exports['update picture unsuccessful'] = function(test) {
+// Test for an unsuccessful picture change
+exports['update picture (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.update_picture('username', 'bad_picture', function(success) {
+    users.update_picture('bad_username', 'new_picture', function(success) {
+        console.log(success);
         test.ok(!success);
         test.done();
     });
@@ -120,18 +121,18 @@ exports['update picture unsuccessful'] = function(test) {
 // ====================================UPDATE EMAIL========================================
 
 // Test for a successful email change
-exports['update email successful'] = function(test) {
+exports['update email (successful)'] = function(test) {
     test.expect(1);
-    users.update_email('username', 'email', function(success) {
+    users.update_email('username', 'new_email', function(success) {
         test.ok(!success);
         test.done();
     });
 };
 
 // Test for an unsuccessful email change
-exports['update email unsuccessful'] = function(test) {
+exports['update email (unsuccessful)'] = function(test) {
     test.expect(1);
-    users.update_email('username', 'bad_email', function(success) {
+    users.update_email('bad_username', 'new_email', function(success) {
         test.ok(!success);
         test.done();
     });

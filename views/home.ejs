@@ -1,7 +1,20 @@
-<% include chunks/header_loggedin %>
+<% include chunks/header %>
 
 <div class="mainbody">
-    <h1>Home Page</h1>
+    <div id="main_video_frame">
+        <iframe id="primary_video" src="<%= primary_video_url %>" frameborder="0" allowfullscreen></iframe>
+        <div id="like_etc_options">
+            <button type="button" id="like">Like</button>
+            <button type="button" id="favorite">Favorite</button>
+            <button type="button">Share</button>
+            <p id="watch_count" id="watch">Watch Count:</p>
+        </div>
+        <div id="category_bar"></div>
+    </div>
+    <div id="next_videos">
+        <img id="second_video_small" src="/video_image_example.png">
+        <img id="third_video_small" src="/video_image_example.png">
+    </div>
 </div>
 
 <% include chunks/footer %>
