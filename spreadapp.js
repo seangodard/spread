@@ -22,9 +22,11 @@ app.get('/', require('./routes/home'));
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
+app.get('/login', require('./routes/loginpage'));
 
 // Post Routes
 app.post('/register', require('./routes/register'));
+app.post('/login', require('./routes/login'));
 
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
