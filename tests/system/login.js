@@ -10,7 +10,7 @@ var portnumber = 8088;
 // Empty the database
 exports['setup'] = function(test) {
     users.deleteAll(function() {
-        users.adduser('alice', 'password', 'alice', 'lastname', 'email@email', null, null, null, function(success) {
+        users.adduser('alice', 'password', 'alice', 'lastname', 'email@email.com', null, null, null, function(success) {
             if (success) {
                 test.done();
             };
