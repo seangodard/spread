@@ -155,6 +155,14 @@ module.exports.update_email = function(username, new_email, callback) {
     });
 };
 
+// Retrieve the user for getting the user's bio and profile picture
+module.exports.retrieve_user = function(username, callback) {  
+    db.users.findOne({username:username}, function(error, user) {
+        if (error) throw error;
+        callback(user);
+    });
+};
+
 // Delete all users in collection
 module.exports.deleteAll = function(callback) {
     db.users.remove({}, function(error) {
