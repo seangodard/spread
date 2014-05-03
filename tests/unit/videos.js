@@ -244,6 +244,24 @@ exports['Find one video (unsuccessful - username)'] = function(test) {
     });
 };
 
+// ====================================================================== Finding Random Videos ====
+// Test post_new_video successful
+exports['add another test video - alice'] = function(test){
+    test.expect(1);
+    videos.post_new_video('alice','alice_video','length','title','view_count',
+                          1,'likes','favorites','flagged',
+                          'category',true,'thumbnail', function(success){
+        test.ok(success);
+        test.done();
+    });
+};
+
+// Test for retrieving a random video
+exports['Retrieve a random video'] = function(test) {
+    videos.randomVideo('category', function(video) {
+        test.done();
+    });
+};
 
 // ====================================================================== Single Deletion ==========
 

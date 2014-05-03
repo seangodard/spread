@@ -6,12 +6,17 @@ var validator = require('validator');
 module.exports = function(request,response) {
     var loggedin_username = request.session.username;
     
-    var primary_video_url = "//www.dailymotion.com/embed/video/x1r8v42"
+    var category = 'comedy';
     
-    /*
-    videos.get_random_videos(function(video1,video2,video3) {
-        response.render('home', {username:loggedin_username, primary_video:video1, video2:video2, video3:video3});
-    });*/
+    videos.randomVideo(category, function(video1) {
+        if (video1) {
+            response.render('home', {username:loggedin_username, video:video1});
+        } else {
+            // Render default video
+            var default_vid = {title:'Doom.', url:"//www.youtube.com/embed/FiARsQSlzDc"};
+            response.render('home', {username:loggedin_username, video:default_vid});
+        }
+    });
     
-    response.render('home', {username:loggedin_username, primary_video_url:primary_video_url});
+    //response.render('home', {username:loggedin_username, primary_video_url:primary_video_url});
 };

@@ -2,11 +2,12 @@
 
 <div class="mainbody">
     <div id="main_video_frame">
-        <iframe id="primary_video" src="<%= primary_video_url %>" frameborder="0" allowfullscreen></iframe>
+        <h1><%= video.title %></h1> 
+        <iframe id="primary_video" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
         <div id="like_etc_options">
-            <button type="button" id="like">Like</button>
-            <button type="button" id="favorite">Favorite</button>
-            <button type="button">Share</button>
+            <button type="button" id="like" onclick="">Like</button>
+            <button type="button" id="favorite" onclick="">Favorite</button>
+            <button type="button" >Share</button>
             <p id="watch_count" id="watch">Watch Count:</p>
         </div>
         <div id="category_bar"></div>

@@ -17,8 +17,8 @@ module.exports.post_new_video = function(username,url,length,title,
         
         // if the video doesn't already exist
         if (!video) {
-            
-            var new_video = {username:username,url:url,length:length,view_count:view_count,shares_needed:shares_needed,likes:likes, favorites:favorites, flagged:flagged,category:category,promoted:promoted,thumbnail:thumbnail};
+            var random = Math.random();
+            var new_video = {username:username,url:url,length:length,view_count:view_count,shares_needed:shares_needed,likes:likes, favorites:favorites, flagged:flagged,category:category,promoted:promoted,thumbnail:thumbnail,random:random};
             
             db.videos.insert(new_video, function(error) {
                 if (error) throw error;
@@ -237,7 +237,63 @@ module.exports.findVideo = function(username,url, callback) {
             callback(false);
         }
     })
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+// ADD TO FUNCTION THAT VIDEO MUST ALSO HAVE SHARES NEEDED GREATER THAN 0
+
+
+// Retrieve a random video from the database by category: random chooses
+module.exports.randomVideo = function(category, callback) {
+    // random number to compare random field with 
+    var random_number = Math.random();
+    
+    // Random 1 or 0: Randomize whether to check less than first or greater than first
+    var choice = Math.round(Math.random());
+
+    if (choice === 1) {
+        db.videos.findOne({category:category, shares_needed: {$gt:0}, promoted:true, random:{$gte: random_number}}, function(error, video) {
+            if (error) throw error;
+        
+            if (video) {
+                callback(video);
+            } else {
+                db.videos.findOne({category:category, shares_needed: {$gt:0}, promoted:true, random:{$lte: random_number}}, function(error, video) {
+                    if (video) {
+                        callback(video);
+                    } else {
+                        callback(false);
+                    }
+                });
+            }
+        });
+    } else {
+        db.videos.findOne({category:category, random:{$lte: random_number}}, function(error, video) {
+            if (error) throw error;
+        
+            if (video) {
+                callback(video);
+            } else {
+                db.videos.findOne({category:category, random:{$gte: random_number}}, function(error, video) {
+                    if (video) {
+                        callback(video);
+                    } else {
+                        callback(false);
+                    }
+                });
+            }
+        });
+    }
+};
 
 //============================================================= Delete ==========
 // Delete a specific video

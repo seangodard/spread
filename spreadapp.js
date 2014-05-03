@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 // Server Port number
-var port = 8088;
+var port = 8089;
 
 // Configure the server
 app.set('view engine', 'ejs');

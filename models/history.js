@@ -4,13 +4,35 @@ var mongojs = require('mongojs');
 // Connect to the database spreadapp, collection: history
 var db = mongojs('spreadapp', ['history']);
 
-// Add an item to history
+// Add an item to user's history: only one history item per user url
 module.exports.add_item = function(username, timestamp, url, callback) {
     db.history.insert({username:username,timestamp:timestamp,url:url}, function(error) {
         if (error) throw error;
         callback();
     });
 };
+
+/*
+//--------------------------------------------------------------------------------------
+
+// Toggle Like for a video in the user's history
+module.exports.toggleLike = function(username, timestamp, url, callback) {
+    db.history.find({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
+        if (error) throw error;
+        callback(history);
+    });
+};
+
+// Toggle Favorite for a video in the user's history
+module.exports.toggleFavorite = function(username, timestamp, url, callback) {
+    db.history.find({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
+        if (error) throw error;
+        callback(history);
+    });
+};
+
+//--------------------------------------------------------------------------------------
+*/
 
 // Retrieve users history within a date range
 module.exports.retrieve_range_history = function(username, startrange, endrange, callback) {
@@ -36,7 +58,7 @@ module.exports.delete_userhistory = function(username, callback) {
     });
 };
 
-// Delete a list of items from a user's history-----incomplete
+// Delete a list of items from a user's history-----incomplete?
 module.exports.delete_userhistory_items = function(username, arrayOfDatesToDelete, callback) {
     arrayOfDatesToDelete.forEach(function(date) {
         db.history.remove({username:username, timestamp: date}, function(error) {
