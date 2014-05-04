@@ -3,9 +3,7 @@
 <div class="mainbody">
         
     <div class="picture">
-        <!-- function that gets and displays the user's picture-->
         
-        <!-- HTML code that displays the data from the above function -->
     </div>
     
     <div class="about_me_bio">
@@ -15,7 +13,7 @@
     </div>
 
     <h1>New Post</h1>
-        <form method="post" action="/register">
+        <form method="post" action="/">
             <fieldset>
                 <legend>Required Fields</legend>
                 <input id="subject" type="text" name="Subject" placeholder="Subject">
@@ -25,7 +23,7 @@
                 <p id="error"><%= error %></p>
             <% } %>
             <div class="submit">
-                <input id="register_submit" type="submit post">
+                <input id="post_submit" type="Submit">
             </div>
         </form>
     

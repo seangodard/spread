@@ -8,24 +8,26 @@ var loggedin_username = request.session.username;                 // need the us
 
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
 
+var items = require(‘../models/items’);
+
+
+
+module.exports = function(request, response) {
+    users.retrieve_user(function(user) {
+        response.render(‘user’, {});
+    });
+};
+
 // Retrieve the user's profile picture from the user's collection
-module.exports.retrieve_picture(loggedin_username, function(success) {
+module.exports.retrieve_user(loggedin_username, function() {
     if (success) {
-    
+        
     }
     else {
         throw error;
     }
    
 });
-
-// Retrieve the user's bio/aout me from the user's collection
-module.exports.retrieve_bio(loggedin_username, function(success) {
-    
-
-    
-});
-
 
 
 // Get new post information if it's there
@@ -48,8 +50,7 @@ module.exports.add_post(loggedin_username, timestamp, subject, body, function(su
     }
     // Unsuccessful registartion redirects back to registation page with an error
     else {
-        request.session.error = 'Username '+name+' is not available.';
-        response.redirect('/registration');
+        response.redirect('/');
     }
 });
 
