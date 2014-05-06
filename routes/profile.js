@@ -4,30 +4,17 @@ var videos = require('../models/videos');
 var posts = require('../models/posts');
 var validator = require('validator');
 
-var loggedin_username = request.session.username;                 // need the username of the user that is currently logged in ?????????????????????????????????????????????????????????????
-
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
 
-var items = require(‘../models/items’);
-
-
-
 module.exports = function(request, response) {
+    var loggedin_username = request.session.username;
+    
     users.retrieve_user(function(user) {
-        response.render(‘user’, {});
+        response.render('profile', {user:user});
     });
+    
+    posts.add_post(function())
 };
-
-// Retrieve the user's profile picture from the user's collection
-module.exports.retrieve_user(loggedin_username, function() {
-    if (success) {
-        
-    }
-    else {
-        throw error;
-    }
-   
-});
 
 
 // Get new post information if it's there

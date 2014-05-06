@@ -1,46 +1,51 @@
 <% include chunks/header %>
 <!--This section is for the promoted video, bio, and picture  -->
-<div class="mainbody">
-        
+<body class="mainbody">
+    
+    <!-- Display the user's profile picture -->
     <div class="picture">
-        
+        <p><%=user.picture%></p>
     </div>
     
-    <div class="about_me_bio">
-        <!-- function that gets and displays the user's bio-->
-        
-        <!-- HTML code that displays the data from the above function -->
+    <!-- Display the user's bio -->
+    <div class="bio">
+        <p><%=user.bio%></p>
     </div>
-
-    <h1>New Post</h1>
-        <form method="post" action="/">
-            <fieldset>
-                <legend>Required Fields</legend>
-                <input id="subject" type="text" name="Subject" placeholder="Subject">
-                <input id="body" type="text" name="Body" placeholder="Body">                
-            </fieldset>
-            <% if (error) { %>
-                <p id="error"><%= error %></p>
-            <% } %>
-            <div class="submit">
-                <input id="post_submit" type="Submit">
-            </div>
-        </form>
     
+    <!-- Display the user's promoted video in a ready to watch video pane -->
     <div class="promoted_video">
-        <!-- function that gets and displays the user's promoted video-->
-        
-        <!-- HTML code that displays the data from the above function -->
+        <p><a href=“/item/<%= item._id %>”><%= item.title %></a></p>
     </div>
     
-</div>
-
-<div class="posts">
-    <!-- forms for user to fill out that make a new post -->
-    
-    <!-- function that gets and displays the user's posts -->
+    <!-- Display a form to make a new post and the user's post history -->
+    <div class="posts">
         
-    <!-- HTML code that displays the data from the above function -->
-</div>
+        <!-- Form for user to fill out that make a new post -->
+        <h3>New Post</h3>
+            <form method="post" action="/">
+                <fieldset>
+                    <input id="subject" type="text" name="Subject" placeholder="Subject">
+                    <input id="body" type="text" name="Body" placeholder="Body">                
+                </fieldset>
+                <% if (error) { %>
+                    <p id="error"><%= error %></p>
+                <% } %>
+                <div class="submit">
+                    <input id="post_submit" type="Submit">
+                </div>
+            </form>
+            
+        <!-- Get and display the user's posts in a table-->
+        <table>
+            <% posts.forEach(function(post) { %>
+                <tr>
+                    <td><a href=“/item/<%= item._id %>”><%= item.title %></a></td>
+                </tr>
+            <% }); %>
+        </table>
+        
+    </div>
+    
+</body>
 
 <% include chunks/footer %>
