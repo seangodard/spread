@@ -2,30 +2,39 @@
 <!--This section is for the promoted video, bio, and picture  -->
 <body class="mainbody">
     
-    <!-- Display the user's profile picture -->
-    <div class="picture">
-        <p><%=user.picture%></p>
+    <!-- Display the user's profile picture and their name-->
+    <div id="picture">
+        <img src=<%=user.picture%> width="50" height="50">
+        <h2><%=user.first_name%> <%=user.last_name%></h2>
     </div>
     
     <!-- Display the user's bio -->
-    <div class="bio">
+    <div id="bio">
         <p><%=user.bio%></p>
     </div>
     
     <!-- Display the user's promoted video in a ready to watch video pane -->
-    <div class="promoted_video">
-        <p><a href=“/item/<%= item._id %>”><%= item.title %></a></p>
+    <div id="promoted_video_frame">
+        <h1><%= user.title %></h1> 
+        <iframe id="promoted_video" src="<%= user.promoted_video_url %>" frameborder="0" allowfullscreen></iframe>
+        <div id="like_etc_options">
+            <button type="button" id="like" onclick="">Like</button>
+            <button type="button" id="favorite" onclick="">Favorite</button>
+            <button type="button" >Share</button>
+            <p id="watch_count" id="watch">Watch Count:</p>
+        </div>
+        <div id="category_bar"></div>
     </div>
     
-    <!-- Display a form to make a new post and the user's post history -->
-    <div class="posts">
+    <!-- Display a form to make a new post as well as the user's post history -->
+    <div id="posts">
         
         <!-- Form for user to fill out that make a new post -->
         <h3>New Post</h3>
             <form method="post" action="/">
                 <fieldset>
                     <input id="subject" type="text" name="Subject" placeholder="Subject">
-                    <input id="body" type="text" name="Body" placeholder="Body">                
+                    <textarea id="body" type="text" name="Body" placeholder="Body">                
                 </fieldset>
                 <% if (error) { %>
                     <p id="error"><%= error %></p>
