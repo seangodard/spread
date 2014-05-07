@@ -14,6 +14,7 @@ module.exports = function(request,response) {
     if (loggedin_username) {
         response.redirect('/');
     }
+    
     // Render page
     else {
         response.render('registration',{error:error,username:loggedin_username});

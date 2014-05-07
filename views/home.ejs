@@ -1,16 +1,22 @@
 <% include chunks/header %>
-
+<script></script>
 <div class="mainbody">
     <div id="main_video_frame">
         <h1><%= video.title %></h1> 
         <iframe id="primary_video" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
         <div id="like_etc_options">
-            <button type="button" id="like" onclick="">Like</button>
+            <button type="button" id="like" onclick="<%  %>">Like</button>
             <button type="button" id="favorite" onclick="">Favorite</button>
             <button type="button" >Share</button>
             <p id="watch_count" id="watch">Watch Count:</p>
         </div>
-        <div id="category_bar"></div>
+        <div id="category_bar">
+            <ul>
+                <% categories.forEach(function(category) { %>
+                    <li> <%= category %> </li>
+                <% });%>                
+            </ul>
+        </div>
     </div>
     <div id="next_videos">
         <img id="second_video_small" src="/video_image_example.png">
