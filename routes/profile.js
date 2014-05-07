@@ -4,28 +4,17 @@ var videos = require('../models/videos');
 var posts = require('../models/posts');
 var validator = require('validator');
 
-var loggedin_username = request.session.username;                 // need the username of the user that is currently logged in ?????????????????????????????????????????????????????????????
-
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
 
-// Retrieve the user's profile picture from the user's collection
-module.exports.retrieve_picture(loggedin_username, function(success) {
-    if (success) {
+module.exports = function(request, response) {
+    var loggedin_username = request.session.username;
     
-    }
-    else {
-        throw error;
-    }
-   
-});
-
-// Retrieve the user's bio/aout me from the user's collection
-module.exports.retrieve_bio(loggedin_username, function(success) {
+    users.retrieve_user(function(user) {
+        response.render('profile', {user:user});
+    });
     
-
-    
-});
-
+    posts.add_post(function())
+};
 
 
 // Get new post information if it's there
@@ -48,8 +37,7 @@ module.exports.add_post(loggedin_username, timestamp, subject, body, function(su
     }
     // Unsuccessful registartion redirects back to registation page with an error
     else {
-        request.session.error = 'Username '+name+' is not available.';
-        response.redirect('/registration');
+        response.redirect('/');
     }
 });
 
