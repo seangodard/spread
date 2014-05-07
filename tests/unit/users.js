@@ -1,14 +1,16 @@
 // Unit tests for the users collection
 var users = require('../../models/users');
 
-// Empty the database
+
+// ==================================== WIPE USERS CLEAN ==================================
+// Empty users
 exports['setup'] = function(test) {
     users.deleteAll(function() {
         test.done();
     });
 };
 
-// ====================================REGISTRATION========================================
+// ==================================== REGISTRATION ======================================
 
 // Test for a successful registration
 exports['register a user (sucessful)'] = function(test) {
@@ -28,7 +30,7 @@ exports['register a user (unsuccessful)'] = function(test) {
     });
 };
 
-// =======================================LOGIN===========================================
+// ======================================= LOGIN ==========================================
 
 // Test for a successful login
 exports['login (successful)'] = function(test) {
@@ -57,7 +59,7 @@ exports['login (bad password)'] = function(test) {
     });
 };
 
-// =================================PASSWORD CHANGE====================================
+// ================================= PASSWORD CHANGE ======================================
 
 // Test for a successful password change
 exports['change password (successful)'] = function(test) {
@@ -77,7 +79,7 @@ exports['change password (unsuccessful)'] = function(test) {
     });
 };
 
-// ====================================UPDATE BIO========================================
+// ==================================== UPDATE BIO =========================================
 
 // Test for a successful bio change
 exports['update bio (successful)'] = function(test) {
@@ -97,7 +99,7 @@ exports['update bio (unsuccessful)'] = function(test) {
     });
 };
 
-// ====================================UPDATE PICTURE========================================
+// ==================================== UPDATE PICTURE ======================================
 
 // Test for a successful picture change
 exports['update picture (successful)'] = function(test) {
@@ -118,7 +120,7 @@ exports['update picture (unsuccessful)'] = function(test) {
     });
 };
 
-// ====================================UPDATE EMAIL========================================
+// ==================================== UPDATE EMAIL ========================================
 
 // Test for a successful email change
 exports['update email (successful)'] = function(test) {
@@ -137,6 +139,9 @@ exports['update email (unsuccessful)'] = function(test) {
         test.done();
     });
 };
+
+
+// ==================================== CLOSE CONNECTION ===================================
 
 // Empty the database and close the connection
 exports['cleanup'] = function(test) {

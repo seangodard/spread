@@ -56,6 +56,8 @@ module.exports.login = function(username, password, callback) {
 // Change password
 module.exports.change_password = function(username, old_password, new_password, callback) {
     
+    console.log("1 entered old password: "+hash_old);
+    
     // Hash the new password
     bcrypt.hash(new_password, 10, function(error, hash_new) {
         if (error) throw error;
@@ -82,7 +84,6 @@ module.exports.change_password = function(username, old_password, new_password, 
                     // save the user
                     db.users.save(user, function(error){
                         if (error) throw error;
-                        
                     });  
                     
                 });
@@ -93,69 +94,30 @@ module.exports.change_password = function(username, old_password, new_password, 
 };
 
 // Update bio
-module.exports.update_bio = function(username, new_bio, callback) {    
-
-    // Find and modify an existing user's bio
-    db.users.findOne({username:username}, function(error, user) {
+module.exports.update_bio = function(username, new_bio, callback) {
+    db.users.update({username:username},{$set: {bio:new_bio}}, function(error) {
         if (error) throw error;
-        
-        user.bio = new_bio;
-        
-        db.users.save(user, function(error){
-            
-            if (error) throw error;
-            
-            callback(user.bio === new_bio);
-        });
+        callback();
     });
 };
 
 // Update profile picture
-module.exports.update_picture = function(username, new_picture, callback) {    
-
-    // Find and modify an existing user's picture
-    db.users.findAndModify({
-        /*search criteria*/
-        query: {username:username},
-        /*field to change*/
-        update: {$setOnInsert:{picture:new_picture}},
-        /*says to return modified version*/
-        new: true,
-        /*create a new document if there wasn't one*/
-        upsert: false
-        
-        }, function(error, user) {
-            
-            if (error) throw error;
-            
-            callback(user.picture === new_picture);  
+module.exports.update_picture = function(username, new_picture, callback) {
+    db.users.update({username:username},{$set: {email:new_picture}}, function(error) {
+        if (error) throw error;
+        callback();
     });
 };
 
 // Update email
-module.exports.update_email = function(username, new_email, callback) {    
-
-    // Find and modify an existing user's bio
-    db.users.findAndModify({
-        /*search criteria*/
-        query: {username:username},
-        /*field to change*/
-        update: {$setOnInsert:{email:new_email}},
-        /*says to return modified version*/
-        new: true,
-        /*create a new document if there wasn't one*/
-        upsert: false
-        
-        }, function(error, user) {
-            
-            if (error) throw error;
-            
-            callback(user.email === new_email);
-               
+module.exports.update_email = function(username, new_email, callback) {
+    db.users.update({username:username},{$set: {email:new_email}}, function(error) {
+        if (error) throw error;
+        callback();
     });
 };
 
-// Retrieve the user for getting the user's bio and profile picture
+// Retrieve the user for getting the user's information on their profile page
 module.exports.retrieve_user = function(username, callback) {  
     db.users.findOne({username:username}, function(error, user) {
         if (error) throw error;
