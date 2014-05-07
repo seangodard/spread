@@ -19,6 +19,7 @@ app.use(express.session({secret:'ItsASecret'}));
 
 // Get Routes
 app.get('/', require('./routes/home'));
+app.get('/watch/:category', require('./routes/categoryselect'))
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
@@ -37,7 +38,7 @@ app.post('/login', require('./routes/login'));
 //app.post('/inbox', require('./routes/inbox'));
 //app.post('/myspread', require('./routes/myspread'));
 
-// app.get('*', require('./routes/error'));
+app.get('*', require('./routes/error'));
 
 app.listen(port);
 console.log('Server is up on port '+port+".");

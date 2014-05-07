@@ -4,6 +4,12 @@ var mongojs = require('mongojs');
 // Connect to the database spreadapp, collection: videos
 var db = mongojs('spreadapp', ['videos']);
 
+// Test function calls
+module.exports.test = function() {
+    console.log('test!');
+}
+
+
 // Post new video: username, url, length, title, view_count, shares_needed
 // likes, favorites, flagged, category, promoted
 // Optional: promoted video url, pic, bio
@@ -18,7 +24,7 @@ module.exports.post_new_video = function(username,url,length,title,
         // if the video doesn't already exist
         if (!video) {
             var random = Math.random();
-            var new_video = {username:username,url:url,length:length,view_count:view_count,shares_needed:shares_needed,likes:likes, favorites:favorites, flagged:flagged,category:category,promoted:promoted,thumbnail:thumbnail,random:random};
+            var new_video = {username:username,url:url,length:length,title:title,view_count:view_count,shares_needed:shares_needed,likes:likes, favorites:favorites, flagged:flagged,category:category,promoted:promoted,thumbnail:thumbnail,random:random};
             
             db.videos.insert(new_video, function(error) {
                 if (error) throw error;
@@ -61,7 +67,6 @@ module.exports.change_promoted_video = function(username, promote_url, callback)
 module.exports.add_likecount = function(url, callback) {
     db.videos.findOne({url:url}, function(error, video) {
         if (error) throw error;
-        
         if (!video) {
             callback(false);
         }
@@ -109,7 +114,7 @@ module.exports.add_favorite = function(url, callback) {
         }
         
         else {
-            video.likecount = video.favorites + 1;
+            video.favorites = video.favorites + 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -129,7 +134,7 @@ module.exports.sub_favorite = function(url, callback) {
         }
         
         else {
-            video.likecount = video.favorites - 1;
+            video.favorites = video.favorites - 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -151,7 +156,7 @@ module.exports.add_flagged = function(url, callback) {
         }
         
         else {
-            video.likecount = video.flagged + 1;
+            video.flagged = video.flagged + 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -171,7 +176,7 @@ module.exports.sub_flagged = function(url,callback) {
         }
         
         else {
-            video.likecount = video.flagged - 1;
+            video.flagged = video.flagged - 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -193,7 +198,7 @@ module.exports.add_share = function(url, callback) {
         }
         
         else {
-            video.likecount = video.shares_needed + 1;
+            video.shares_needed = video.shares_needed + 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -213,7 +218,7 @@ module.exports.sub_share = function(url, callback) {
         }
         
         else {
-            video.likecount = video.shares_needed - 1;
+            video.shares_needed = video.shares_needed - 1;
     
             db.videos.save(video, function(error) {
                 if (error) throw error;
@@ -239,22 +244,15 @@ module.exports.findVideo = function(username,url, callback) {
     })
 };
 
-
-
-
-
-
-
-
-
-
-
-// ADD TO FUNCTION THAT VIDEO MUST ALSO HAVE SHARES NEEDED GREATER THAN 0
-
-
-// Retrieve a random video from the database by category: random chooses
+// Retrieve a random video from the database or by category if specified
 module.exports.randomVideo = function(category, callback) {
-    // random number to compare random field with 
+    // Selects a random category to search for if random was passed as the category
+    if (category === 'random') {
+        var categories = ['art','comedy','music','sports','educational','films','technology'];
+        category = categories[Math.floor(Math.random()* categories.length)];
+    }
+        
+    // random number to compare random field with
     var random_number = Math.random();
     
     // Random 1 or 0: Randomize whether to check less than first or greater than first
