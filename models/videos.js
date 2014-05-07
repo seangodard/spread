@@ -240,15 +240,6 @@ module.exports.findVideo = function(username,url, callback) {
 };
 
 
-
-
-
-
-
-
-
-
-
 // ADD TO FUNCTION THAT VIDEO MUST ALSO HAVE SHARES NEEDED GREATER THAN 0
 
 
