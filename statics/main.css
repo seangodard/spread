@@ -13,6 +13,10 @@ p,h1,h2,ul,a, body {
 /* Small screen changes*/
 
 /*Header Stuff-Small*/
+#tophead{
+        background-color: rgb(255, 185, 0);
+        padding: 5px;
+    }
 .headrow {
     background-color: rgb(25,25,25);
     overflow: auto;
@@ -220,7 +224,6 @@ th, td {
 }
 #messages {
     padding: 0%;
-    background-color: rgba(255,165,0,.75);
     
 }
 
@@ -265,23 +268,25 @@ th, td {
 footer {
     color: rgb(225,225,225);
     background-color: rgb(25,25,25);
-    margin-top: 7%;
+    margin:0%;
     clear: both;
     text-align: center;
     font-size: small;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
-
-
-
+#belowfoot{
+    background-color: rgb(255, 185, 0);
+    padding: 5px;
+}
 
 /* Medium screen changes --------------------------------------------*/
 @media screen and (min-width: 480px) {
     /*Header Stuff - Medium*/
-    
+    #tophead{
+        background-color: rgb(255, 185, 0);
+        padding: 5px;
+    }
 
     /*Body Stuff - Medium*/
     /*Video Stuff-Medium*/
@@ -319,7 +324,7 @@ footer {
         width: 100%;
     }
     /*----------------------------------------------------------*/
-    /* inbox small screen ---------------------------------------*/
+    /* inbox medium screen ---------------------------------------*/
     #chat {
         clear: both;
         border: double;
@@ -329,7 +334,6 @@ footer {
     }
     #messages {
         padding: 0%;
-        background-color: rgba(255,165,0,.75);
         
     }
     
@@ -380,21 +384,77 @@ footer {
     
     
     /*Footer-Medium*/
-
+    #belowfoot{
+        background-color: rgb(255, 185, 0);
+        padding: 5px;
+    }
+    
 }
 
-
-
-
-
+}
 
 
 /* Large screen changes ------------------------------------------------*/
 @media screen and (min-width: 800px) {
     /*Header Stuff - Large*/
+    #tophead{
+        background-color: rgb(255, 185, 0);
+        padding: 5px;;
+    }
+    
     #logohome {
         width: 75px;
         height: 75px;
+    }
+    
+    /* inbox large screen ---------------------------------------*/
+    #chat {
+        clear: both;
+        border: double;
+        text-align: center;
+        font-size: small;
+        
+    }
+    #messages {
+        padding: 0%;
+        
+    }
+    
+    #messagebox {
+        padding-left: 24%;
+        padding-right: 24%;
+        border: double;
+    }
+    
+    #sendmessage {
+        clear: both;
+        border: none;
+        background-color: rgb(100,100,100);
+    }
+    
+    #reply_form {
+        margin: 0;
+        padding: 0%;
+        width: 100%;
+        border: none;
+        
+    }
+    
+    #recipient, #subject,  {
+        margin: 0%;
+        border: none;
+        padding: 0%;
+        float: left;
+    }
+    #body{
+        float: none;
+    }
+    #sendform {
+        width: 100%;
+        padding:0%;
+    }
+    #submit_message {
+        float: inherit;
     }
 
     /*Body Stuff - Large*/
@@ -408,7 +468,10 @@ footer {
         width: 305px;
     }
     
-    /*Footer - Large*/
-    
+     /*Footer-Medium*/
+    #belowfoot{
+        background-color: rgb(255, 185, 0);
+        padding: 5px;
+    }
 }
 

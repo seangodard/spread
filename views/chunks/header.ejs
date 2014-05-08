@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="/main.css">
         <div class="headrow">
+            <p id="tophead"></p>
             <div class="logo">
                 <a href="/"><img id ="logohome" src="/logo_small.png" alt="Home"></a>
             </div>
@@ -17,15 +18,13 @@
                     <li><a id="logout" href="/logout">Logout</a></li>
                 </ul>
             </nav>
-            <div class="searchbox">
-                <input id="search_querry" type="text" name="search" placeholder="Search" required>
-            </div>
         </div>
 <% } else { %>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="/main.css">
         <div class="headrow">
+            <p id="tophead"></p>
             <div class="logo">
                 <a href="/"><img id ="logohome" src="/logo_small.png" alt="Home"></a>
             </div>
@@ -35,9 +34,6 @@
                     <li><a id="register" href="/registration">Register</a></li>
                 </ul>
             </nav>
-            <div class="searchbox">
-                <input id="search_querry" type="text" name="search" placeholder="Search" required>
-            </div>
         </div>
 <% } %>
     </head>
