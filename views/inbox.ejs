@@ -11,8 +11,8 @@
              <% inbox.forEach(function(message) { %>
              <tr>
                 <td>
-                    <p><%= message.sender %></p>
-                    <a href=“/message/<%= message.sender %>”><%= message.body %></a>
+                    <p><%= message.sender %> Subject:"<%= message.subject %>" <%= message.timestamp.getDate() %> </p>
+                    <p><%= message.body %></p>
                 </td>
              </tr>
              <% }); %>
