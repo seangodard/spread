@@ -47,7 +47,7 @@ module.exports = function(request,response) {
                     // Call add_post to add a new post to the posts collection
                     users.update_bio(loggedin_username, timestamp, subject, body, function(){
                     
-                        response.redirect('/profile/'+loggedin_username);
+                        response.redirect('/manageaccount');
                     });
                 });
             });
