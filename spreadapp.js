@@ -25,10 +25,7 @@ app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
 app.get('/login', require('./routes/loginpage'));
 app.get('/history',require('./routes/history'));
-<<<<<<< HEAD
 app.get('/inbox',require('./routes/inbox'));
-=======
->>>>>>> 1c3f39042d91d79a5e6554a33261afd5d50a9eb8
 
 // Post Routes
 app.post('/register', require('./routes/register'));
