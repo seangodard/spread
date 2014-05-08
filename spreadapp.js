@@ -26,11 +26,11 @@ app.get('/logout', require('./routes/logout'));
 app.get('/login', require('./routes/loginpage'));
 app.get('/history',require('./routes/history'));
 app.get('/inbox',require('./routes/inbox'));
+app.get('/next/:video',require('./routes/nextvideo'))
 
 // Post Routes
 app.post('/register', require('./routes/register'));
 app.post('/login', require('./routes/login'));
-
 app.post('/delete_all',require('./routes/delete_all'));
 
 //app.post('/', require('./routes/home'));

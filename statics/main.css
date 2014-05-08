@@ -115,7 +115,6 @@ fieldset * {
 }
 
 #second_video_small, #third_video_small {
-    background-color: rgb(250,0,0);
     margin: 10px;
     height: 76px;
     width: 135px;
