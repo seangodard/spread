@@ -60,7 +60,7 @@ exports['Promote Video (unsuccessful)'] = function(test) {
         test.done();
     });
 };
-
+/*
 // ====================================================================== Like Count ==========
 
 // add one like, successful
@@ -177,13 +177,14 @@ exports['subtract flagged (unsuccessful)'] = function(test) {
         test.done();
     })
 }
+*/
 
 // ====================================================================== Shares_Needed Count ==========
 
 // add one share, successful
 exports['add share (successful)'] = function(test) {
     test.expect(1);
-    videos.add_share('url', function(success) {
+    videos.add_share('username','url', function(success) {
         test.ok(success);
         test.done();
     })
@@ -192,7 +193,7 @@ exports['add share (successful)'] = function(test) {
 // add one share, unsuccessful
 exports['add share (unsuccessful)'] = function(test) {
     test.expect(1);
-    videos.add_share('bad_url', function(success) {
+    videos.add_share('username','bad_url', function(success) {
         test.ok(!success);
         test.done();
     })
@@ -201,7 +202,7 @@ exports['add share (unsuccessful)'] = function(test) {
 // subtract one share, successful
 exports['subtract share (successful)'] = function(test) {
     test.expect(1);
-    videos.sub_share('url', function(success) {
+    videos.sub_share('username','url', function(success) {
         test.ok(success);
         test.done();
     })
@@ -210,7 +211,7 @@ exports['subtract share (successful)'] = function(test) {
 // subtract one share, unsuccessful
 exports['subtract share (unsuccessful)'] = function(test) {
     test.expect(1);
-    videos.sub_share('bad_url', function(success) {
+    videos.sub_share('username','bad_url', function(success) {
         test.ok(!success);
         test.done();
     })
@@ -244,23 +245,7 @@ exports['Find one video (unsuccessful - username)'] = function(test) {
     });
 };
 
-// Test for finding all videos by a user - successful
-exports['Find one video (successful)'] = function(test) {
-    test.expect(1);
-    videos.findHistory('username', function(success) {
-        test.ok(success);
-        test.done();
-    });
-};
 
-// Test for finding all videos by a user - unsuccessful
-exports['Find one video (unsuccessful - username)'] = function(test) {
-    test.expect(1);
-    videos.findHistory('bad_username', function(success) {
-        test.ok(!success);
-        test.done();
-    });
-};
 
 // ====================================================================== Finding Random Videos ====
 // Test post_new_video successful
