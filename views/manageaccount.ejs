@@ -5,12 +5,12 @@
     <form method="post" action="/manageaccount">
         <fieldset>
             <legend>Change Promoted Video</legend>
-            <input id="" type="text" name="first_name" placeholder="First Name" required>
-            <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
-            <input id="username" type="text" name="username" placeholder="User Name" required>
-            <input id="password" type="password" name="password" placeholder="Password" required>                
-            <input id="email" type="text" name="email" placeholder="Email" required>
+            <% videos.forEach(function(video) { %>
+                <input type="radio" name="promoted_video" value="title">video.title<br>
+            <% }); %>
+            }
         </fieldset>
+        
         <fieldset>
             <legend>Change Profile Picture</legend>
             <input id="" type="text" name="first_name" placeholder="First Name" required>
@@ -19,10 +19,12 @@
             <input id="password" type="password" name="password" placeholder="Password" required>                
             <input id="email" type="text" name="email" placeholder="Email" required>
         </fieldset>
+        
         <fieldset>
             <legend>Update Email</legend>
             <input id="email" type="text" name="email" placeholder="<%=user.email%>">
         </fieldset>
+        
         <fieldset>
             <legend>Add a New Video</legend>
             <input id="" type="text" name="first_name" placeholder="First Name" required>
@@ -31,10 +33,12 @@
             <input id="password" type="password" name="password" placeholder="Password" required>                
             <input id="email" type="text" name="email" placeholder="Email" required>
         </fieldset>
+        
         <fieldset>
             <legend>Edit bio</legend>
             <textarea id="bio" name="bio" placeholder="<%=user.bio%>"</textarea>
         </fieldset>
+        
         <fieldset>
             <legend>Change Password</legend>
             <input id="" type="text" name="first_name" placeholder="First Name" required>
@@ -43,14 +47,13 @@
             <input id="password" type="password" name="password" placeholder="Password" required>                
             <input id="email" type="text" name="email" placeholder="Email" required>
         </fieldset>
+        
         <fieldset>
             <label for="picture">Profile Picture</label>
             <input id="picture" type="file" name="profile_pic"/>
             <textarea id="bio" name="bio" placeholder="Please tell us a bit about you."></textarea>
         </fieldset>
-        <% if (error) { %>
-            <p id="error"><%= error %></p>
-        <% } %>
+        
         <div class="manageaccount_submit">
             <input id="manageaccount_submit" type="submit">
         </div>

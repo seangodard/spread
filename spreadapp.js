@@ -38,7 +38,7 @@ app.post('/delete_all',require('./routes/delete_all'));
 //app.post('/profile', require('./routes/profile'));
 //app.post('/history', require('./routes/history'));
 //app.post('/manageaccount', require('./routes/manageaccount'));
-//app.post('/inbox', require('./routes/inbox'));
+app.post('/inbox', require('./routes/inbox'));
 //app.post('/myspread', require('./routes/myspread'));
 
 app.get('*', require('./routes/error'));
