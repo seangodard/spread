@@ -2,62 +2,54 @@
 
 <body class="mainbody">
     
-<!-- Display the user's profile picture and their name-->
-    <div id="picture">
-        <!--<img src="<%= user.picture %>" width="300" height="300">-->
+<!-- Display the user's profile picture and their name is they have a picture-->
+    <div id="name">
         <h1><%= user.first_name %> <%= user.last_name %></h1>
     </div>
-
+    
+<% if (user.picture) { %>
+    <div id="picture">
+        <img src="<%= user.picture %>" width="300" height="300">
+    </div>
+<% } %>
+    
 <!-- Display the user's bio -->
     <div id="bio">
         <p>About <%=user.first_name%>: <%=user.bio%></p>
     </div>
-    
-<% if (username) { %>
 
-<!-- Link to the user's inbox only for owner-->
-    <div id="inbox_link">
-        <a href="/inbox">Go to My Inbox</a>
-    </div>
-<!-- Link to the user's manage account page only for owner--> 
-    <div id="manageaccount_link">
-        <a href="/manageaccount">Manage My Account</a>
-    </div>
-    
-<% } %>
 
 <% if (promoted_video) { %>
 <!-- Display the user's promoted video in a ready to watch video pane -->
     <div id="promoted_video_frame">
-        
         <h2><%= promoted_video.title %></h2> 
-        
         <iframe id="promoted_video" src="<%= promoted_video.url %>" frameborder="0" allowfullscreen></iframe>
     </div>
 <% } %>
+
 <!-- Display a form to make a new post as well as a table with the user's post history -->
     <div id="posts">
         
         <% if (username) { %>
         <!-- Form for the profile owner to fill out that makes a new post only for owner-->
             <form method="post" action="/profilepost">
-                <fieldset>
-                    <input id="subject" type="text" name="subject" placeholder="Subject">
-                    <textarea id="body" type="text" name="body" placeholder="Body"></textarea>                
+                <fieldset id="new_post">
+                    <legend>Submit a New Post</legend>
+                    <input id="post_subject" type="text" name="post_subject" placeholder="Subject">
+                    <textarea id="post_body" type="text" name="post_body" placeholder="Body"></textarea>
+                    <div class="submit">
+                        <input id="post_submit" type="Submit">
+                    </div>
                 </fieldset>
-                <div class="submit">
-                    <input id="post_submit" type="Submit">
-                </div>
             </form>
         <% } %>
             
         <!-- Get and display the user's posts in a table-->
-        <table>
-            <th></th>
+        <table id="post_table">
                 <tr>
-                    <td><b>Subject</b></td>
-                    <td><b>Body</b></td>
-                    <td><b>Time</b></td>
+                    <th><b>Subject</b></th>
+                    <th><b>Body</b></th>
+                    <th><b>Time</b></th>
                 </tr>
                 <% posts.forEach(function(post) { %>
                 <tr>

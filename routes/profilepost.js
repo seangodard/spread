@@ -9,8 +9,8 @@ module.exports = function(request,response) {
     var loggedin_username = request.session.username;
     
     // Get new post information if it's there
-    var subject = validator.escape(request.body.subject);
-    var body = validator.escape(request.body.body);
+    var subject = validator.escape(request.body.post_subject);
+    var body = validator.escape(request.body.post_body);
     var timestamp = new Date();
     
     // Add the new post to the posts collection
