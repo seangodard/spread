@@ -10,6 +10,7 @@ module.exports = function(request,response) {
     var id = url.substring(index+1);
     
     // Retrieve the video from the url by ID
+    videos.findVideoByID(id, function(video) {
         if (!video) {
             response.redirect('/error');
         } else {
