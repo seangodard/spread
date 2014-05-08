@@ -34,7 +34,7 @@ app.post('/register', require('./routes/register'));
 app.post('/login', require('./routes/login'));
 app.post('/profilepost', require('./routes/profilepost'));
 app.post('/manageaccountpost', require('./routes/manageaccountpost'));
-app.post('/inbox', require('./routes/inbox'));
+app.post('/inboxpost', require('./routes/inboxpost'));
 app.post('/delete_all',require('./routes/delete_all'));
 
 //app.post('/', require('./routes/home'));
