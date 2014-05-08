@@ -8,10 +8,9 @@
         <!-- Change the user's promoted video: show them all
         of their posted videos and have them select one -->
         <fieldset>
-            <legend><b>Change Promoted Video</b></legend>
-            <% videos.forEach(function(video) { %>
-                <input id="promoted_video" type="radio" name="promoted_video" value="<%=video.url%>"><%=video.title%><br>
-            <% }); %>
+            <legend><b>New Promoted Video URL</b></legend>
+            <p>Note: You may only enter the URL of a video you have already uploaded.</p>
+            <input id="promoted_video_url" type="text" name="promoted_video_url" placeholder="New Promoted Video URL">
             
         </fieldset>
         
@@ -31,30 +30,24 @@
         <!-- Add a new video to the user's videos-->
         <fieldset>
             <legend><b>Add a New Video to Your Account</b></legend>
-            <input id="video_url" type="text" name="video_url" placeholder="Video URL">
-            <input id="video_category" type="" name="password" placeholder="Category">                
+            <input id="video_url" type="text" name="video_url" placeholder="Video URL">                
             <input id="video_title" type="text" name="video_title" placeholder="Video Title">
-            <input id="video_length" type="text" name="video_length" placeholder="Video Length">
-                
-            <select id="category" name="category">
-                <option value="art">art</option>
-                <option value="comedy">comedy</option>
-                <option value="music">music</option>
-                <option value="sports">sports</option>
-                <option value="educational">educational</option>
-                <option value="films">films</option>
-                <option value="technology">technology</option>
-            </select>
+            <input id="video_length" type="text" name="video_length" placeholder="Video Length">            
+            <input id="category" type="category" name="category" placeholder="Category">
             
             <label for="thumbnail">Video Thumbnail</label>
             <input id="thumbnail" type="file" name="thumbnail"/>
         </fieldset>
         
-        <!-- Edit all posts-->
+        <% if (error) { %>
+            <p id="error"><%= error %></p>
+        <% } %>
+        
+        <!-- Edit all posts
         <fieldset>
             <legend><b>Edit a Post</b></legend>
             <table id="edit_post">
-                <!-- Get and display the user's posts in a table of editable text boxes-->
+                Get and display the user's posts in a table of editable text boxes
                     <tr>
                         <th><b>Subject</b></th>
                         <th><b>Body</b></th>
@@ -69,6 +62,7 @@
                 <% }); %>
             </table>
         </fieldset>
+        -->
         
         <!-- Edit the user's bio -->
         <fieldset>

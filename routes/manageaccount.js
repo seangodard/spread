@@ -8,6 +8,7 @@ var validator = require('validator');
 module.exports = function(request, response) {
     
     var loggedin_username = request.session.username;
+    var error = request.session.error;
 
     // Call retrieve_user to get the user's information from the users collection
     users.retrieve_user(loggedin_username, function(user) {
@@ -18,7 +19,7 @@ module.exports = function(request, response) {
             // Call retrieve_posts to display the user's posts
             posts.retrieve_posts(loggedin_username, function(allposts) {
                 
-                response.render('manageaccount', {username:loggedin_username, user:user, posts:allposts, videos:allvideos});
+                response.render('manageaccount', {error:error, username:loggedin_username, user:user, posts:allposts, videos:allvideos});
                 
             });
         });
