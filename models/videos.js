@@ -241,7 +241,7 @@ module.exports.findVideo = function(username,url, callback) {
 
 // Find a specific video by id
 module.exports.findVideoByID = function(itemid, callback) {
-    db.videos.findOne({_id:itemid}, function(error, video) {
+    db.videos.findOne({_id:mongojs.ObjectId(itemid)}, function(error, video) {
         if (error) throw error;
         callback(video);
     })

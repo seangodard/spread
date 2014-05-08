@@ -30,8 +30,6 @@ app.get('/inbox', require('./routes/inbox'));
 app.get('/profile/:username', require('./routes/profile'));
 app.get('/next/:video',require('./routes/nextvideo'));
 
->>>>>>> 0be19169f4e3364cfef7361b17936205317fb6a4
-
 // Post Routes
 app.post('/register', require('./routes/register'));
 app.post('/login', require('./routes/login'));

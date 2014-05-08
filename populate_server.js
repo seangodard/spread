@@ -55,9 +55,26 @@ var dinner_talk = {username:frank.username,url:"//www.youtube.com/embed/NTAhwUWW
             view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
 var coffvtea = {username:george.username,url:"//www.youtube.com/embed/fVfXDDBtZAk",length:27,title:'Coffee Vs. Tea',
             view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
-              
-            
-var fake_video_array =[iht,numa,starwars_kid,c_rain,evolution_dance,dinner_talk,coffvtea];
+var g_pro = {username:howie.username,url:"//www.youtube.com/embed/wNX9WOuWDSc?list=PLrEnWoR732-B62Psx7Z58pfFHrS9rtxL_",length:27,title:'Moonroof',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'sports',promoted:true,thumbnail:''};
+var bases = {username:ingrid.username,url:"//www.youtube.com/embed/qItugh-fFgg",length:27,title:'All Your Bases',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'technology',promoted:true,thumbnail:''};
+var fox = {username:janice.username,url:"//www.youtube.com/embed/jofNR_WkoCE",length:27,title:'What Does the Fox Say?',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'music',promoted:true,thumbnail:''};
+var jelly = {username:kevin.username,url:"//www.youtube.com/embed/Z3ZAGBL6UBA",length:27,title:'Jelly Time!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'music',promoted:true,thumbnail:''};
+var leeroy = {username:leanne.username,url:"//www.youtube.com/embed/LkCNJRfSZBU",length:27,title:'Leeroy Jenkins!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
+var taser = {username:michael.username,url:"//www.youtube.com/embed/6bVa6jn4rpE",length:27,title:'Don\'t Tase Me Bro!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'educational',promoted:true,thumbnail:''};
+var cat = {username:nick.username,url:"//www.youtube.com/embed/J---aiyznGQ",length:27,title:'Keyboard Cat!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'music',promoted:true,thumbnail:''};
+var hey = {username:oscar.username,url:"//www.youtube.com/embed/ZZ5LpwO-An4",length:27,title:'Hey!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'music',promoted:true,thumbnail:''};
+var hpvs = {username:pat.username,url:"//www.youtube.com/embed/9N5KyjM5v0c",length:27,title:'HP vs SW!',
+            view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
+
+var fake_video_array =[iht,numa,starwars_kid,c_rain,evolution_dance,dinner_talk,coffvtea, g_pro, bases, jelly, leeroy, taser, cat, hey, hpvs, fox];
 
 
 // Populate server with fake videos and gives them to random users
