@@ -123,20 +123,34 @@ th, td {
     text-align: center;
 }
 
+/*manage account -------------------------------------------*/
 
-
-#manacc_submit {
+.manageaccount_submit {
+    width: 50%;
     text-align: center;
-    padding: 1%;
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
+#manacc_submit{
+    width: 25%;
+}
+/*----------------------------------------------------------*/
 
+/* profile stuff-------------------------------------------*/
+#profile{
+    text-align: center;
+    width:100%;
+}
 
+#posts {
+    width: 100%;
+}
 
-
-
-
-
+#post_table{
+    width: 100%;
+}
+/*----------------------------------------------------------*/
 /*Video Stuff - Small*/
 #main_video_frame {
     margin-top: 5%;
@@ -155,7 +169,6 @@ th, td {
 }
 
 #second_video_small, #third_video_small {
-    background-color: rgb(250,0,0);
     margin: 10px;
     height: 76px;
     width: 135px;
@@ -197,7 +210,7 @@ th, td {
 #category_bar {}
 
 
-/* inbox small screen */
+/* inbox small screen ---------------------------------------*/
 #chat {
     clear: both;
     border: double;
@@ -246,6 +259,7 @@ th, td {
 #submit_message {
     float: inherit;
 }
+/* --------------------------------------------------------*/
 
 /*Footer - Small*/
 footer {
@@ -264,14 +278,14 @@ footer {
 
 
 
-/* Medium screen changes */
+/* Medium screen changes --------------------------------------------*/
 @media screen and (min-width: 480px) {
     /*Header Stuff - Medium*/
     
 
     /*Body Stuff - Medium*/
     /*Video Stuff-Medium*/
-    #primary_video {
+    #primary_video, #promoted_video{
         height: 315px;
         width: 560px;
     }
@@ -281,6 +295,90 @@ footer {
         width: 265px;
     }
 
+
+    /* profile stuff-------------------------------------------*/
+    #profile{
+        text-align: center;
+        width:100%;
+    }
+    
+    #posts {
+        width: 100%;
+    }
+    
+    #new_post{
+        width: 50%;
+        padding: 0%;
+    }
+    
+    #post_subject,#post_body,#submit,#post_submit{
+        float: left;
+    }
+    
+    #post_table{
+        width: 100%;
+    }
+    /*----------------------------------------------------------*/
+    /* inbox small screen ---------------------------------------*/
+    #chat {
+        clear: both;
+        border: double;
+        text-align: center;
+        font-size: small;
+        
+    }
+    #messages {
+        padding: 0%;
+        background-color: rgba(255,165,0,.75);
+        
+    }
+    
+    #messagebox {
+        padding-left: 24%;
+        padding-right: 24%;
+        border: double;
+    }
+    
+    #sendmessage {
+        clear: both;
+        border: none;
+        background-color: rgb(100,100,100);
+    }
+    
+    #reply_form {
+        margin: 0;
+        padding: 0%;
+        width: 100%;
+        border: none;
+        
+    }
+    
+    #recipient, #subject,  {
+        margin: 0%;
+        border: none;
+        padding: 0%;
+        float: left;
+    }
+    #body{
+        float: none;
+    }
+    #sendform {
+        width: 100%;
+        padding:0%;
+    }
+    #submit_message {
+        float: inherit;
+    }
+    /* --------------------------------------------------------*/
+    /*manage account -------------------------------------------*/
+    #manacc_submit {
+        text-align: center;
+        padding: 1%;
+    }
+    /*----------------------------------------------------------*/
+    
+    
+    
     /*Footer-Medium*/
 
 }
@@ -291,7 +389,7 @@ footer {
 
 
 
-/* Large screen changes */
+/* Large screen changes ------------------------------------------------*/
 @media screen and (min-width: 800px) {
     /*Header Stuff - Large*/
     #logohome {
@@ -301,7 +399,7 @@ footer {
 
     /*Body Stuff - Large*/
     /*Video Specific - Large*/
-    #primary_video {
+    #primary_video,#promoted_video {
         height: 360px;
         width: 640px;
     }

@@ -28,7 +28,7 @@ app.get('/history',require('./routes/history'));
 app.get('/manageaccount', require('./routes/manageaccount'));
 app.get('/inbox', require('./routes/inbox'));
 app.get('/profile/:username', require('./routes/profile'));
-
+app.get('/next/:video',require('./routes/nextvideo'));
 
 // Post Routes
 app.post('/register', require('./routes/register'));
