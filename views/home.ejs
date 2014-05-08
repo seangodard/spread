@@ -12,17 +12,6 @@
             </ul>
         </div>
     </div>
-    <div id="next_videos">
-        <% if (next_vid1.bad !== 'bad') { %>
-            <a href="<%='/next/'+next_vid1._id %>"><img id="second_video_small" src="/blue_pill.png"></a>
-        <% } else { %>
-            <img id="second_video_small" src="/blue_pill.png">
-        <% } if (next_vid1.bad !== 'bad') { %>
-            <a href="<%='/next/'+next_vid2._id %>"><img id="third_video_small" src="/red_pill.png"></a>
-        <% } else { %>
-            <img id="second_video_small" src="/red_pill.png">
-        <% } %>
-    </div>
 </div>
 
 <% include chunks/footer %>

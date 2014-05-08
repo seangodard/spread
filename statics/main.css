@@ -183,37 +183,6 @@ th, td {
     margin: 10px;
 }
 
-#like {
-    background: url("/like.png") no-repeat center center;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    border: none;
-    color: transparent;
-}
-
-#unlike {
-    background: url("/unlike.png") no-repeat center center;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    border: none;
-    color: transparent;
-}
-
-#favorite {
-    background: url("/favorite.png") no-repeat center center;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    border: none;
-    color: transparent;
-}
-
-
-#category_bar {}
-
-
 /* inbox small screen ---------------------------------------*/
 #chat {
     clear: both;
@@ -299,7 +268,6 @@ footer {
         height: 149px;
         width: 265px;
     }
-
 
     /* profile stuff-------------------------------------------*/
     #profile{
@@ -395,7 +363,7 @@ footer {
 
 
 /* Large screen changes ------------------------------------------------*/
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 800px) {    
     /*Header Stuff - Large*/
     #tophead{
         background-color: rgb(255, 185, 0);

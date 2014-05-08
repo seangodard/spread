@@ -41,11 +41,16 @@ module.exports.change_promoted_video = function(username, promote_url, callback)
     var success = false;
     db.videos.find({username:username}, function(error, vids) {
         if (error) throw error;
-        
+
         vids.forEach(function(video) {
             if (video.url === promote_url) {
                 video.promoted = true;
                 success = true;
+                db.videos.save(video, function(error) {
+                    if (error) throw error;
+                })
+            } else {
+                video.promoted = false;
                 db.videos.save(video, function(error) {
                     if (error) throw error;
                 })
