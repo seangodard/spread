@@ -244,7 +244,22 @@ module.exports.findVideo = function(username,url, callback) {
     })
 };
 
-// Find the promoted video -- untested function
+// Find all videos for a user
+module.exports.findAllVideos = function(username, callback) {
+    db.videos.find({username:username}, function(error, videos) {
+        if (error) throw error;
+        
+        if (videos) {
+            callback(videos);
+        }
+        
+        else {
+            callback(false);
+        }
+    })
+};
+
+// Find the promoted video
 module.exports.findPromotedVideo = function(username, callback) {
     db.videos.findOne({username:username, promoted: true}, function(error, video) {
         if (error) throw error;
