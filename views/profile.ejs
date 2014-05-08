@@ -1,7 +1,7 @@
 <% include chunks/header %>
 
 <body class="mainbody">
-    
+    <div id="profile">
 <!-- Display the user's profile picture and their name is they have a picture-->
     <div id="name">
         <h1><%= user.first_name %> <%= user.last_name %></h1>
@@ -60,6 +60,7 @@
             <% }); %>
         </table>
         
+    </div>
     </div>
 </body>
 
