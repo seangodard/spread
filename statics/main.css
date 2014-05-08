@@ -93,6 +93,50 @@ fieldset * {
     text-align: center; 
 }
 
+
+#name {
+    font-size: large;
+}
+
+#picture {
+    text-align: center;
+}
+
+#bio {
+    text-align: center;
+}
+
+#promoted_video_frame {
+    text-align: center;
+    size: 100%;
+}
+
+th, td {
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgb(255, 185, 0);
+}
+
+#post_table {
+    border: 2px solid black;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+
+
+#manacc_submit {
+    text-align: center;
+    padding: 1%;
+}
+
+
+
+
+
+
+
+
 /*Video Stuff - Small*/
 #main_video_frame {
     margin-top: 5%;
