@@ -20,8 +20,8 @@
             <input id="email" type="text" name="email" placeholder="Email" required>
         </fieldset>
         <fieldset>
-            <legend>Change Email</legend>
-            <input id="email" type="text" name="email" placeholder="Email">
+            <legend>Update Email</legend>
+            <input id="email" type="text" name="email" placeholder="<%=user.email%>">
         </fieldset>
         <fieldset>
             <legend>Add a New Video</legend>
@@ -33,7 +33,7 @@
         </fieldset>
         <fieldset>
             <legend>Edit bio</legend>
-            <textarea id="bio" name="bio" placeholder=<%=user.bio%></textarea>
+            <textarea id="bio" name="bio" placeholder="<%=user.bio%>"</textarea>
         </fieldset>
         <fieldset>
             <legend>Change Password</legend>
@@ -51,8 +51,8 @@
         <% if (error) { %>
             <p id="error"><%= error %></p>
         <% } %>
-        <div class="submit">
-            <input id="register_submit" type="submit">
+        <div class="manageaccount_submit">
+            <input id="manageaccount_submit" type="submit">
         </div>
     </form>
 </div>

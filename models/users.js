@@ -97,7 +97,7 @@ module.exports.change_password = function(username, old_password, new_password, 
 module.exports.update_bio = function(username, new_bio, callback) {
     db.users.update({username:username},{$set: {bio:new_bio}}, function(error) {
         if (error) throw error;
-        callback();
+        callback(true);
     });
 };
 
@@ -105,7 +105,7 @@ module.exports.update_bio = function(username, new_bio, callback) {
 module.exports.update_picture = function(username, new_picture, callback) {
     db.users.update({username:username},{$set: {email:new_picture}}, function(error) {
         if (error) throw error;
-        callback();
+        callback(true);
     });
 };
 
@@ -113,7 +113,7 @@ module.exports.update_picture = function(username, new_picture, callback) {
 module.exports.update_email = function(username, new_email, callback) {
     db.users.update({username:username},{$set: {email:new_email}}, function(error) {
         if (error) throw error;
-        callback();
+        callback(true);
     });
 };
 

@@ -244,9 +244,22 @@ module.exports.findVideo = function(username,url, callback) {
     })
 };
 
+// Find the promoted video -- untested function
+module.exports.findPromotedVideo = function(username, callback) {
+    db.videos.findOne({username:username, promoted: true}, function(error, video) {
+        if (error) throw error;
+        
+        if (video) {
+            callback(video);
+        }
+        
+        else {
+            callback(false);
+        }
+    })
+};
 
-// ADD TO FUNCTION THAT VIDEO MUST ALSO HAVE SHARES NEEDED GREATER THAN 0
-
+// Retrieve a random video from the database or by category if specified
 
 // Retrieve a random video from the database by category: random chooses
 module.exports.randomVideo = function(category, callback) {
