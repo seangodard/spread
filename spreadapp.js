@@ -32,7 +32,7 @@ app.post('/login', require('./routes/login'));
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
-app.post('/profile', require('./routes/profile'));
+//app.post('/profile', require('./routes/profile'));
 //app.post('/history', require('./routes/history'));
 //app.post('/manageaccount', require('./routes/manageaccount'));
 //app.post('/inbox', require('./routes/inbox'));

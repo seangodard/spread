@@ -1,5 +1,6 @@
 // Spread Homepage
 var videos = require('../models/videos');
+var history = require('../models/history');
 var validator = require('validator');
 
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
@@ -18,7 +19,13 @@ module.exports = function(request,response) {
     if (categories.indexOf(category) !== -1) {
         videos.randomVideo(category, function(video1) {
             if (video1) {
+                //videos.
+                
+                
                 response.render('home', {username:loggedin_username, video:video1, categories:categories});
+                
+                
+                
             } else {
                 // Render default video
                 var default_vid = {title:'Doom.', url:"//www.youtube.com/embed/FiARsQSlzDc"};
