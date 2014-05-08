@@ -1,0 +1,20 @@
+<% include chunks/header %>
+
+<div class="mainbody">
+    <h1>Log In</h1>
+    <form method="post" action="/login">
+        <fieldset>
+            <legend>Log In</legend>
+            <input id="username" type="text" name="username" placeholder="User Name" required>
+            <input id="password" type="password" name="password" placeholder="Password" required>                
+        </fieldset>
+        <% if (error) { %>
+            <p id="error"><%= error %></p>
+        <% } %>
+        <div class="submit">
+            <input id="login_submit" type="submit">
+        </div>
+    </form>
+</div>
+
+<% include chunks/footer %>

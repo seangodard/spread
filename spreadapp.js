@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 // Server Port number
-var port = 8086;
+var port = 8089;
 
 // Configure the server
 app.set('view engine', 'ejs');
@@ -19,24 +19,28 @@ app.use(express.session({secret:'ItsASecret'}));
 
 // Get Routes
 app.get('/', require('./routes/home'));
+app.get('/watch/:category', require('./routes/categoryselect'))
 app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
-app.get('/inbox', require('./routes/inbox'));
+app.get('/login', require('./routes/loginpage'));
+app.get('/profile/:username', require('./routes/profile'));
+app.get('/history',require('./routes/history'));
+
 
 // Post Routes
 app.post('/register', require('./routes/register'));
+app.post('/login', require('./routes/login'));
+app.post('/profilepost/:username', require('./routes/profilepost'));
 
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
-//app.post('/profile', require('./routes/profile'));
-//app.post('/history', require('./routes/history'));
 //app.post('/manageaccount', require('./routes/manageaccount'));
 app.post('/inbox', require('./routes/inbox'));
 //app.post('/myspread', require('./routes/myspread'));
 
-// app.get('*', require('./routes/error'));
+app.get('*', require('./routes/error'));
 
 app.listen(port);
 console.log('Server is up on port '+port+".");

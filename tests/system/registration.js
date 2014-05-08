@@ -3,7 +3,7 @@ var users = require('../../models/users');
 var zombie = require('zombie');
 var browser = new zombie();
 // Server port number: should be same as spreadapp.js
-var portnumber = 8086;
+var portnumber = 8088;
 
 // ADD TEST FOR PROFILE PICTURE
 

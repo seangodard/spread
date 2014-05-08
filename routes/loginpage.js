@@ -1,6 +1,4 @@
-// Registration page: try to register
-var users = require('../models/users');
-var validator = require('validator');
+// Log In page
 
 // should pass also whether or not the user is logged in, specifically to instruct which header to use
 module.exports = function(request,response) {
@@ -17,7 +15,7 @@ module.exports = function(request,response) {
     
     // Render page
     else {
-        response.render('registration',{error:error,username:loggedin_username});
+        response.render('login',{error:error,username:loggedin_username});
         delete request.session.error;
     }
     
