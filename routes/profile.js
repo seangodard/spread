@@ -27,13 +27,8 @@ module.exports = function(request, response) {
             // Get the profile owner's promoted video
             videos.findPromotedVideo(profile_username, function(promoted_video) {
                 
-                if (loggedin_username === profile_username) {
-                    response.render('profile', {username: loggedin_username, user:retrieved_user, posts:allposts, promoted_video:promoted_video});
-                }
-                
-                else {
-                    response.render('profile', {username: profile_username, user:retrieved_user, posts:allposts, promoted_video: promoted_video});
-                }
+                response.render('profile', {username: loggedin_username, user:retrieved_user, posts:allposts, promoted_video:promoted_video});
+            
             });
         });
     });

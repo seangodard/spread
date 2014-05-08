@@ -85,10 +85,10 @@ fake_history.forEach(function(fake_history_item) {
 // Populate messages with fake stuff
 
 // add fake dates
-var date1 = new Date();
-var date2 = new Date(); date2.setDate(9);
-var date3 = new Date(); date3.setDate(10);
-var date4 = new Date(); date4.setDate(11);
+var date1 = new Date(); date1.setDate(1);
+var date2 = new Date(); date2.setDate(2);
+var date3 = new Date(); date3.setDate(3);
+var date4 = new Date(); date4.setDate(4);
 
 // create fake messages
 var aliceTobob = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"Hi bob, how are you?"};
@@ -96,17 +96,17 @@ var bobToalice = {username:bob.username,recipient:alice.username,subject:'Hi',ti
 var aliceTobob2 = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"I really like your video!"};
 var bobToalice2 = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"Oh thanks!"};
 var zedTobob = {username:zed.username,recipient:bob.username,subject:'video',timestamp:date1,body:"yo bob that video rocks bro!"};
-var bobTobzed = {username:bob.username,recipient:zed.username,subject:'video',timestamp:date2,body:"Haha thanks man!"};
-var zedToalice = {username:zed.username,recipient:alice.username,subject:'bobs video',timestamp:date2,body:"Hey alice did you check out bob's vid?"};
+var bobTozed = {username:bob.username,recipient:zed.username,subject:'video',timestamp:date2,body:"Haha thanks man!"};
+var zedToalice = {username:zed.username,recipient:alice.username,subject:'bobs video',timestamp:date1,body:"Hey alice did you check out bob's vid?"};
 var aliceTozed = {username:alice.username,recipient:zed.username,subject:'bobs video',timestamp:date2,body:"yeah i did its awesome!"};
 var aliceTozed2 = {username:alice.username,recipient:zed.username,subject:'bobs video',timestamp:date2,body:"You should also check out calvins video."};
 var zedToalice2 = {username:zed.username,recipient:alice.username,subject:'bobs video',timestamp:date3,body:"Sure ill check it out."};
 var zedTocalvin = {username:zed.username,recipient:calvin.username,subject:'video',timestamp:date3,body:"Brooooooooo, that video tho!"};
-var calvinTozed = {username:calvin.username,recipient:zed.username,subject:'vidoe',timestamp:date4,body:"Huh? What about it?"};
+var calvinTozed = {username:calvin.username,recipient:zed.username,subject:'video',timestamp:date4,body:"Huh? What about it?"};
 
 
 // Array with messages
-var message_array =[aliceTobob,bobToalice,aliceTobob2,bobToalice2,zedTobob,bobTobzed,zedToalice,aliceTozed,aliceTozed2,zedToalice2,zedTocalvin,calvinTozed];
+var message_array =[aliceTobob,bobToalice,aliceTobob2,bobToalice2,zedTobob,bobTozed,zedToalice,aliceTozed,aliceTozed2,zedToalice2,zedTocalvin,calvinTozed];
 
 // loop to add the messages to database
 message_array.forEach(function(fake_message) {

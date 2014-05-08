@@ -1,63 +1,96 @@
 <% include chunks/header %>
+<% if (username) { %>
 
 <div class="mainbody">
-    <h1>Manage Account</h1>
-    <form method="post" action="/manageaccount">
+    <h1><b>Manage Account</b></h1>
+    <form method="post" action="/manageaccountpost">
+        
+        <!-- Change the user's promoted video: show them all
+        of their posted videos and have them select one -->
         <fieldset>
-            <legend>Change Promoted Video</legend>
+            <legend><b>Change Promoted Video</b></legend>
             <% videos.forEach(function(video) { %>
-                <input type="radio" name="promoted_video" value="title">video.title<br>
+                <input id="promoted_video" type="radio" name="promoted_video" value="<%=video.url%>"><%=video.title%><br>
             <% }); %>
-            }
+            
         </fieldset>
         
+        <!-- Change the user's profile picture -->
         <fieldset>
-            <legend>Change Profile Picture</legend>
-            <input id="" type="text" name="first_name" placeholder="First Name" required>
-            <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
-            <input id="username" type="text" name="username" placeholder="User Name" required>
-            <input id="password" type="password" name="password" placeholder="Password" required>                
-            <input id="email" type="text" name="email" placeholder="Email" required>
+            <legend><b>Change Profile Picture</b></legend>
+            <label for="new_picture">New Profile Picture</label>
+            <input id="new_picture" type="file" name="profile_pic"/>
         </fieldset>
         
+        <!-- Change the user's email -->
         <fieldset>
-            <legend>Update Email</legend>
-            <input id="email" type="text" name="email" placeholder="<%=user.email%>">
+            <legend><b>Update Email</b></legend>
+            <input id="new_email" type="text" name="new_email" placeholder="<%=user.email%>">
         </fieldset>
         
+        <!-- Add a new video to the user's videos-->
         <fieldset>
-            <legend>Add a New Video</legend>
-            <input id="" type="text" name="first_name" placeholder="First Name" required>
-            <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
-            <input id="username" type="text" name="username" placeholder="User Name" required>
-            <input id="password" type="password" name="password" placeholder="Password" required>                
-            <input id="email" type="text" name="email" placeholder="Email" required>
+            <legend><b>Add a New Video to Your Account</b></legend>
+            <input id="video_url" type="text" name="video_url" placeholder="Video URL">
+            <input id="video_category" type="" name="password" placeholder="Category">                
+            <input id="video_title" type="text" name="video_title" placeholder="Video Title">
+            <input id="video_length" type="text" name="video_length" placeholder="Video Length">
+                
+            <select id="category" name="category">
+                <option value="art">art</option>
+                <option value="comedy">comedy</option>
+                <option value="music">music</option>
+                <option value="sports">sports</option>
+                <option value="educational">educational</option>
+                <option value="films">films</option>
+                <option value="technology">technology</option>
+            </select>
+            
+            <label for="thumbnail">Video Thumbnail</label>
+            <input id="thumbnail" type="file" name="thumbnail"/>
         </fieldset>
         
+        <!-- Edit all posts-->
         <fieldset>
-            <legend>Edit bio</legend>
-            <textarea id="bio" name="bio" placeholder="<%=user.bio%>"</textarea>
+            <legend><b>Edit a Post</b></legend>
+            <table id="edit_post">
+                <!-- Get and display the user's posts in a table of editable text boxes-->
+                    <tr>
+                        <th><b>Subject</b></th>
+                        <th><b>Body</b></th>
+                        <th><b>Time</b></th>
+                    </tr>
+                <% posts.forEach(function(post) { %>
+                    <tr>
+                        <td><textarea id="post_subject" name="post_subject" placeholder="<%=post.subject%>"></textarea></td>
+                        <td><textarea id="post_body" name="post_bio" placeholder="<%=post.body%>"></textarea></td>
+                        <td><%= post.timestamp %></td>
+                    </tr>
+                <% }); %>
+            </table>
         </fieldset>
         
+        <!-- Edit the user's bio -->
+        <fieldset>
+            <legend><b>Edit Bio</b></legend>
+            <textarea id="new_bio" name="new_bio" placeholder="<%=user.bio%>"></textarea>
+        </fieldset>
+        
+        <!-- Change password
         <fieldset>
             <legend>Change Password</legend>
-            <input id="" type="text" name="first_name" placeholder="First Name" required>
-            <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
             <input id="username" type="text" name="username" placeholder="User Name" required>
             <input id="password" type="password" name="password" placeholder="Password" required>                
-            <input id="email" type="text" name="email" placeholder="Email" required>
+            <input id="new_password" type="text" name="new_password" placeholder="New Password" required>
         </fieldset>
-        
-        <fieldset>
-            <label for="picture">Profile Picture</label>
-            <input id="picture" type="file" name="profile_pic"/>
-            <textarea id="bio" name="bio" placeholder="Please tell us a bit about you."></textarea>
-        </fieldset>
+        -->
         
         <div class="manageaccount_submit">
-            <input id="manageaccount_submit" type="submit">
+            <input id="manacc_submit" type="submit">
         </div>
     </form>
 </div>
+
+<% } %>
 
 <% include chunks/footer %>

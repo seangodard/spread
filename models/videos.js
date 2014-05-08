@@ -35,7 +35,7 @@ module.exports.post_new_video = function(username,url,length,title,
 
 /* Change promoted video: takes in a username and a url
  * Searches the database for all videos owned by the user
- * and sets the promoted field of that url to false and
+ * and sets the promoted field of that url to true and
  * resets all other promted fields for the users videos to false */
 module.exports.change_promoted_video = function(username, promote_url, callback) {
     var success = false;
@@ -238,6 +238,7 @@ module.exports.findVideo = function(username,url, callback) {
     })
 };
 
+
 // Find a specific video by id
 module.exports.findVideoByID = function(itemid, callback) {
     db.videos.findOne({_id:itemid}, function(error, video) {
@@ -246,7 +247,22 @@ module.exports.findVideoByID = function(itemid, callback) {
     })
 };
 
-// Find the promoted video -- untested function
+// Find all videos for a user
+module.exports.findAllVideos = function(username, callback) {
+    db.videos.find({username:username}, function(error, videos) {
+        if (error) throw error;
+        
+        if (videos) {
+            callback(videos);
+        }
+        
+        else {
+            callback(false);
+        }
+    })
+};
+
+// Find the promoted video
 module.exports.findPromotedVideo = function(username, callback) {
     db.videos.findOne({username:username, promoted: true}, function(error, video) {
         if (error) throw error;
