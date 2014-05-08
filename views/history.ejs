@@ -1,0 +1,33 @@
+<% include chunks/header %>
+    
+<!-- Table -->
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Views</th>
+        <th>Owner</th>
+    </tr>
+    
+    <!-- Row data -->
+    <% video_list.forEach(function(history) { %>
+        <tr>
+            <td><a href="<%=history.url%>"><%= history.title %></a></td>
+            <td><%= history.timestamp %></td>
+            <td><%= history.view_count %></td>
+            <td><%= history.owner %></td>
+        </tr>
+    <% }); %>
+</table>
+
+<div>
+
+    <form method="post" action="/delete_all">
+        <div class="submit">
+            <button id="delete_all">Delete All</button>
+        </div>
+    </form>
+
+</div>
+
+<% include chunks/footer %>

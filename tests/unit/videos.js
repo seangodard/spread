@@ -244,6 +244,24 @@ exports['Find one video (unsuccessful - username)'] = function(test) {
     });
 };
 
+// Test for finding all videos by a user - successful
+exports['Find one video (successful)'] = function(test) {
+    test.expect(1);
+    videos.findHistory('username', function(success) {
+        test.ok(success);
+        test.done();
+    });
+};
+
+// Test for finding all videos by a user - unsuccessful
+exports['Find one video (unsuccessful - username)'] = function(test) {
+    test.expect(1);
+    videos.findHistory('bad_username', function(success) {
+        test.ok(!success);
+        test.done();
+    });
+};
+
 // ====================================================================== Finding Random Videos ====
 // Test post_new_video successful
 exports['add another test video - alice'] = function(test){

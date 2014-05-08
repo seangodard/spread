@@ -18,7 +18,7 @@ exports['setup'] = function(test) {
 
 // Test add an item to history
 exports['add item to history'] = function(test) {
-    history.add_item('username',now,'url', function() {
+    history.add_item('username','video_owner',now,'url', function() {
         test.done();
     });  
 };
@@ -37,7 +37,7 @@ exports['retrieve an item from database'] = function(test) {
 exports['retrieve an item from history (excluding properly)'] = function(test) {
     test.expect(1);
     var success = false;
-    history.add_item('username', ancient, 'differenturl',  function() {
+    history.add_item('username', 'video_owner', ancient, 'differenturl',  function() {
         history.retrieve_range_history('username', now, now, function(history) {
             history.forEach(function(historyItem) {
                 if (history.length === 1 && historyItem.url === 'url') {
@@ -117,9 +117,9 @@ console.log(testlist);
 exports['test deleting a list of items from a user\'s history'] = function(test) {
     test.expect(1);
     var success = false;
-    history.add_item('username',test1,'test1url', function() {
-        history.add_item('username',test2,'test2url', function() {
-            history.add_item('username',test3,'test3url', function() {
+    history.add_item('username','video_owner',test1,'test1url', function() {
+        history.add_item('username','video_owner',test2,'test2url', function() {
+            history.add_item('username','video_owner',test3,'test3url', function() {
                 history.delete_userhistory_items('username',testlist, function() {
                     history.retrieve_all_history('username', function(history) {
                         history.forEach(function(historyItem) {

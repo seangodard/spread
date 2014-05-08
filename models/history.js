@@ -5,8 +5,8 @@ var mongojs = require('mongojs');
 var db = mongojs('spreadapp', ['history']);
 
 // Add an item to user's history: only one history item per user url
-module.exports.add_item = function(username, timestamp, url, callback) {
-    db.history.insert({username:username,timestamp:timestamp,url:url}, function(error) {
+module.exports.add_item = function(username, video_owner, timestamp, url, callback) {
+    db.history.insert({username:username,video_owner:video_owner,timestamp:timestamp,url:url}, function(error) {
         if (error) throw error;
         callback();
     });
@@ -36,13 +36,13 @@ module.exports.toggleFavorite = function(username, timestamp, url, callback) {
 
 // Retrieve users history within a date range
 module.exports.retrieve_range_history = function(username, startrange, endrange, callback) {
-    db.history.find({username:username, timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
+    db.history.find({username:username,timestamp: {$gte: startrange, $lte:endrange}}, function(error, history) {
         if (error) throw error;
         callback(history);
     });
 };
 
-// Retrieve all users history
+// Retrieve all users history objects in a list
 module.exports.retrieve_all_history = function(username, callback) {
     db.history.find({username:username}, function(error, history) {
         if (error) throw error;
