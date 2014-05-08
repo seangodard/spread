@@ -9,6 +9,8 @@ var complete_item = {};
 module.exports = function(request, response) {
     var loggedin_username = request.session.username;
     
+    if (loggedin_username) {
+    
     // Function to combine history and video data
          // Retrieve all of a users history
         history.retrieve_all_history(loggedin_username, function(all_user_history) {
@@ -27,8 +29,14 @@ module.exports = function(request, response) {
         });
         
     
-    setTimeout(function() {
-        response.render('history', {username:loggedin_username,video_list:video_list});
-    }, 1000);
+        setTimeout(function() {
+            response.render('history', {username:loggedin_username,video_list:video_list});
+        }, 2000);
+    
+    }
+
+    else {
+        response.redirect('/');
+    }
     
 };
