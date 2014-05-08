@@ -1,7 +1,9 @@
 var users = require('./models/users');
 var videos = require('./models/videos');
 var history = require('./models/history');
+var inbox = require('./models/messages');
 
+// adds fake users
 var alice = {username:'alice', password:'password', first_name:'Alice', last_name:'Test', email:'alice@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'alice.js'};
 var bob = {username:'bob', password:'password', first_name:'Bob', last_name:'Test', email:'bob@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'bob.js'};
 var calvin = {username:'calvin', password:'password', first_name:'Calvin', last_name:'Test', email:'calvin@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'calvin.js'};
@@ -27,11 +29,18 @@ var veronica = {username:'veronica', password:'password', first_name:'Veronica',
 var will = {username:'will', password:'password', first_name:'Will', last_name:'Test', email:'will@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'willS.js'};
 var xenon = {username:'xenon', password:'password', first_name:'Xenon', last_name:'Test', email:'xenon@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'xenon.js'};
 var yasmina = {username:'yasmina', password:'password', first_name:'Yasmina', last_name:'Test', email:'yasmina@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'yasmina.js'};
-var zed = {username:'zed', password:'password', first_name:'Zed', last_name:'Test', email:'zed@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'zed.js'};
+var zed = {username:'zed', password:'p', first_name:'Zed', last_name:'Test', email:'zed@gmail.com', promoted_video_url:'promoted_video_url', picture:'picture',bio:'zed.js'};
 
 var fake_users = [alice,bob,calvin,daniel,edward,frank,george,howie,ingrid,janice,kevin,leanne,michael,nick,oscar,pat,questlove,randy,sandy,tim,ulga,veronica,will,xenon,yasmina,zed];
 
+// Populate server with fake users
+fake_users.forEach(function(fake_user){
+    users.adduser(fake_user.username, fake_user.password, fake_user.first_name, fake_user.last_name, fake_user.email, fake_user.promoted_video_url, fake_user.picture, fake_user.bio, function(success) {
+        console.log('User added:'+fake_user.username);
+    });
+});
 
+// adds fake videos (real)
 var iht = {username:alice.username,url:"//www.youtube.com/embed/CMNry4PE93Y",length:18,title:'I like turtles',
             view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
 var numa = {username:calvin.username,url:"//www.youtube.com/embed/60og9gwKh1o",length:98,title:'Numa!',
@@ -46,21 +55,9 @@ var dinner_talk = {username:frank.username,url:"//www.youtube.com/embed/NTAhwUWW
             view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
 var coffvtea = {username:george.username,url:"//www.youtube.com/embed/fVfXDDBtZAk",length:27,title:'Coffee Vs. Tea',
             view_count:10,shares_needed:10,likes:10,favorites:10,flagged:10,category:'comedy',promoted:true,thumbnail:''};
-            
-            
-            
-            
-            
+              
             
 var fake_video_array =[iht,numa,starwars_kid,c_rain,evolution_dance,dinner_talk,coffvtea];
-
-
-// Populate server with fake users
-fake_users.forEach(function(fake_user){
-    users.adduser(fake_user.username, fake_user.password, fake_user.first_name, fake_user.last_name, fake_user.email, fake_user.promoted_video_url, fake_user.picture, fake_user.bio, function(success) {
-        console.log('User added:'+fake_user.username);
-    });
-});
 
 
 // Populate server with fake videos and gives them to random users
@@ -82,5 +79,38 @@ var fake_history = [hist1];
 fake_history.forEach(function(fake_history_item) {
    history.add_item(fake_history_item.username, fake_history_item.video_owner, fake_history_item.timestamp, fake_history_item.url, function() {
         console.log('Added history: '+fake_history_item.url);
+   });
+});
+
+// Populate messages with fake stuff
+
+// add fake dates
+var date1 = new Date();
+var date2 = new Date(); date2.setDate(9);
+var date3 = new Date(); date3.setDate(10);
+var date4 = new Date(); date4.setDate(11);
+
+// create fake messages
+var aliceTobob = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"Hi bob, how are you?"};
+var bobToalice = {username:bob.username,recipient:alice.username,subject:'Hi',timestamp:date1,body:"Hi alice, iam doing good, thank you"};
+var aliceTobob2 = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"I really like your video!"};
+var bobToalice2 = {username:alice.username,recipient:bob.username,subject:'Hi',timestamp:date1,body:"Oh thanks!"};
+var zedTobob = {username:zed.username,recipient:bob.username,subject:'video',timestamp:date1,body:"yo bob that video rocks bro!"};
+var bobTobzed = {username:bob.username,recipient:zed.username,subject:'video',timestamp:date2,body:"Haha thanks man!"};
+var zedToalice = {username:zed.username,recipient:alice.username,subject:'bobs video',timestamp:date2,body:"Hey alice did you check out bob's vid?"};
+var aliceTozed = {username:alice.username,recipient:zed.username,subject:'bobs video',timestamp:date2,body:"yeah i did its awesome!"};
+var aliceTozed2 = {username:alice.username,recipient:zed.username,subject:'bobs video',timestamp:date2,body:"You should also check out calvins video."};
+var zedToalice2 = {username:zed.username,recipient:alice.username,subject:'bobs video',timestamp:date3,body:"Sure ill check it out."};
+var zedTocalvin = {username:zed.username,recipient:calvin.username,subject:'video',timestamp:date3,body:"Brooooooooo, that video tho!"};
+var calvinTozed = {username:calvin.username,recipient:zed.username,subject:'vidoe',timestamp:date4,body:"Huh? What about it?"};
+
+
+// Array with messages
+var message_array =[aliceTobob,bobToalice,aliceTobob2,bobToalice2,zedTobob,bobTobzed,zedToalice,aliceTozed,aliceTozed2,zedToalice2,zedTocalvin,calvinTozed];
+
+// loop to add the messages to database
+message_array.forEach(function(fake_message) {
+   inbox.send_message(fake_message.username, fake_message.recipient, fake_message.subject, fake_message.timestamp,fake_message.body, function() {
+        console.log('Added messages: '+fake_message.username+' to '+fake_message.recipient);
    });
 });

@@ -24,7 +24,6 @@ app.get('/registration', require('./routes/registration'));
 app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
 app.get('/login', require('./routes/loginpage'));
-app.get('/profile/:username', require('./routes/profile'));
 app.get('/history',require('./routes/history'));
 app.get('/manageaccount', require('./routes/manageaccount'));
 app.get('/inbox', require('./routes/inbox'));
@@ -35,10 +34,18 @@ app.post('/register', require('./routes/register'));
 app.post('/login', require('./routes/login'));
 app.post('/profilepost', require('./routes/profilepost'));
 app.post('/manageaccountpost', require('./routes/manageaccountpost'));
+app.post('/inbox', require('./routes/inbox'));
+app.post('/delete_all',require('./routes/delete_all'));
+
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
-
+//app.post('/', require('./routes/home'));
+//app.post('/register', require('./routes/registration'));
+//app.post('/searchresults', require('./routes/search'));
+//app.post('/profile', require('./routes/profile'));
+//app.post('/history', require('./routes/history'));
+//app.post('/manageaccount', require('./routes/manageaccount'));
 
 //app.post('/myspread', require('./routes/myspread'));
 

@@ -4,12 +4,6 @@ var mongojs = require('mongojs');
 // Connect to the database spreadapp, collection: videos
 var db = mongojs('spreadapp', ['videos']);
 
-// Test function calls
-module.exports.test = function() {
-    console.log('test!');
-}
-
-
 // Post new video: username, url, length, title, view_count, shares_needed
 // likes, favorites, flagged, category, promoted
 // Optional: promoted video url, pic, bio
@@ -64,8 +58,8 @@ module.exports.change_promoted_video = function(username, promote_url, callback)
 //============================================================== Likes ==========
 
 // Add a like to the like count
-module.exports.add_likecount = function(url, callback) {
-    db.videos.findOne({url:url}, function(error, video) {
+module.exports.add_likecount = function(username, url, callback) {
+    db.videos.findOne({username:username, url:url}, function(error, video) {
         if (error) throw error;
         if (!video) {
             callback(false);
@@ -83,7 +77,7 @@ module.exports.add_likecount = function(url, callback) {
 };
 
 // Subtract a like from the like count
-module.exports.sub_likecount = function(url, callback) {
+module.exports.sub_likecount = function(username, url, callback) {
     db.videos.findOne({url:url}, function(error, video) {
         if (error) throw error;
         
@@ -189,8 +183,8 @@ module.exports.sub_flagged = function(url,callback) {
 // ============================================================= Shares ==========
 
 // Add a share to the shares count
-module.exports.add_share = function(url, callback) {
-    db.videos.findOne({url:url}, function(error, video) {
+module.exports.add_share = function(username, url, callback) {
+    db.videos.findOne({username:username, url:url}, function(error, video) {
         if (error) throw error;
         
         if (!video) {
@@ -209,7 +203,7 @@ module.exports.add_share = function(url, callback) {
 };
 
 // Subtract a share to the shares count
-module.exports.sub_share = function(url, callback) {
+module.exports.sub_share = function(username, url, callback) {
     db.videos.findOne({url:url}, function(error, video) {
         if (error) throw error;
         
@@ -307,13 +301,13 @@ module.exports.randomVideo = function(category, callback) {
             }
         });
     } else {
-        db.videos.findOne({category:category, random:{$lte: random_number}}, function(error, video) {
+        db.videos.findOne({category:category, shares_needed: {$gt:0}, promoted:true, random:{$lte: random_number}}, function(error, video) {
             if (error) throw error;
         
             if (video) {
                 callback(video);
             } else {
-                db.videos.findOne({category:category, random:{$gte: random_number}}, function(error, video) {
+                db.videos.findOne({category:category, shares_needed: {$gt:0}, promoted:true, random:{$gte: random_number}}, function(error, video) {
                     if (video) {
                         callback(video);
                     } else {

@@ -11,10 +11,13 @@ module.exports.retrieve_inbox = function(username, callback){
     // find a collection in which the username is the sender or the recipient
     db.messages.find({$or:[{sender:username,owner:username},{recipient:username,owner:username}]},function(error,inbox){
         if (error) throw error;
+        inbox.sort( function (a,b){
+            return a.timestamp - b.timestamp
+        });
+        
         callback(inbox);
     });
 };
-
 
 // send_message: takes a username, recipient, subject, timestamp, and body
 // adds two new messages to the messages collection, one with the sender as the owner and

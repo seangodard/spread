@@ -1,5 +1,31 @@
 <% include chunks/header %>
 
-Test
+<div class="inboxpage">
+    <nav id="conversations">
+        
+    </nav>
+
+    <div id="chat">
+        
+        <table>
+             <% inbox.forEach(function(message) { %>
+             <tr>
+                <td>
+                    <p><%= message.sender %> Subject:"<%= message.subject %>" <%= message.timestamp.getDate() %> </p>
+                    <p><%= message.body %></p>
+                </td>
+             </tr>
+             <% }); %>
+        </table>
+        
+        <form id="login" method="post" action="/login">
+            <fieldset>
+                <input id="message" type="text" name="reply" placeholder="Write a reply..." required>
+                <input id="submit_message" type="submit">
+            </fieldset>
+        </form>
+        
+    </div>
+</div>
 
 <% include chunks/footer %>
