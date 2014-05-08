@@ -25,7 +25,8 @@ app.get('/myspread', require('./routes/myspread'));
 app.get('/logout', require('./routes/logout'));
 app.get('/login', require('./routes/loginpage'));
 app.get('/profile/:username', require('./routes/profile'));
-//app.get('/history', require('./routes/history'));
+app.get('/history',require('./routes/history'));
+
 
 // Post Routes
 app.post('/register', require('./routes/register'));
@@ -35,8 +36,6 @@ app.post('/profilepost/:username', require('./routes/profilepost'));
 //app.post('/', require('./routes/home'));
 //app.post('/register', require('./routes/registration'));
 //app.post('/searchresults', require('./routes/search'));
-
-
 //app.post('/manageaccount', require('./routes/manageaccount'));
 //app.post('/inbox', require('./routes/inbox'));
 //app.post('/myspread', require('./routes/myspread'));
