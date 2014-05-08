@@ -26,7 +26,7 @@ app.get('/logout', require('./routes/logout'));
 app.get('/login', require('./routes/loginpage'));
 app.get('/profile/:username', require('./routes/profile'));
 app.get('/history',require('./routes/history'));
-
+app.get('/inbox',require('./routes/inbox'));
 
 // Post Routes
 app.post('/register', require('./routes/register'));
