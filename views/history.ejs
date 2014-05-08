@@ -7,7 +7,6 @@
         <th>Date</th>
         <th>Views</th>
         <th>Owner</th>
-        <th></th>
     </tr>
     
     <!-- Row data -->
@@ -17,9 +16,18 @@
             <td><%= history.timestamp %></td>
             <td><%= history.view_count %></td>
             <td><%= history.owner %></td>
-            <td><%= delete function %></td>
         </tr>
     <% }); %>
 </table>
+
+<div>
+
+    <form method="post" action="/delete_all">
+        <div class="submit">
+            <button id="delete_all">Delete All</button>
+        </div>
+    </form>
+
+</div>
 
 <% include chunks/footer %>
