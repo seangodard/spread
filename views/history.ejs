@@ -1,25 +1,25 @@
 <% include chunks/header %>
     
-    <!-- Table -->
-    <table>
+<!-- Table -->
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Views</th>
+        <th>Owner</th>
+        <th></th>
+    </tr>
+    
+    <!-- Row data -->
+    <% video_list.forEach(function(history) { %>
         <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Views</th>
-            <th>Owner</th>
-            <th>Link</th>
+            <td><a href="<%=history.url%>"><%= history.title %></a></td>
+            <td><%= history.timestamp %></td>
+            <td><%= history.view_count %></td>
+            <td><%= history.owner %></td>
+            <td><%= delete function %></td>
         </tr>
-        
-        <!-- Bleh -->
-        <% video_list.forEach(function(history) { %>
-            <tr>
-                <td><%= history.title %></td>
-                <td><%= history.view_count %></td>
-                <td><%= history.timestamp %></td>
-                <td><%= history.owner %></td>
-                <td><%= history.url %></td>
-            </tr>
-        <% }); %>
-    </table>
+    <% }); %>
+</table>
 
 <% include chunks/footer %>
