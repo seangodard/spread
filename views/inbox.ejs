@@ -1,30 +1,27 @@
 <% include chunks/header %>
 
-<div class="inboxpage">
-    <nav id="conversations">
-        
-    </nav>
-
+<div class="mainbody">
     <div id="chat">
-        
-        <table>
+        <section id=messages>
              <% inbox.forEach(function(message) { %>
-             <tr>
-                <td>
-                    <p><%= message.sender %> Subject:"<%= message.subject %>" <%= message.timestamp.getDate() %> </p>
-                    <p><%= message.body %></p>
-                </td>
-             </tr>
+             <section id=messagebox>
+                <h3><%= message.sender %> "<%= message.subject %>" <%= message.timestamp.getMonth()+1%>/<%= message.timestamp.getDate()%>/<%= message.timestamp.getFullYear()%>
+                <%= message.timestamp.getHours()%>:<%= message.timestamp.getMinutes()%> </h2>
+            
+                <p><%= message.body %></p>
+             </section>
              <% }); %>
-        </table>
-        
-        <form id="login" method="post" action="/login">
-            <fieldset>
-                <input id="message" type="text" name="reply" placeholder="Write a reply..." required>
-                <input id="submit_message" type="submit">
-            </fieldset>
-        </form>
-        
+        </section>
+        <section id=sendmessage>
+            <form id="sendform" method="post" action="/inboxpost">
+                <fieldset id="reply_form">
+                    <input id="recipient" type="text" name="recipient" placeholder="Recipient" required>
+                    <input id="subject" type="text" name="subject" placeholder="Subject" required>
+                    <textarea id="body" type="text" name="body" placeholder="Send a reply..." required></textarea>
+                    <input id="submit_message" type="submit">
+                </fieldset>
+            </form>
+        </section>
     </div>
 </div>
 

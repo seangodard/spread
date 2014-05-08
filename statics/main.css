@@ -10,10 +10,6 @@ p,h1,h2,ul,a, body {
 
 
 
-
-
-
-
 /* Small screen changes*/
 
 /*Header Stuff-Small*/
@@ -157,12 +153,65 @@ fieldset * {
 #category_bar {}
 
 
+/* inbox small screen */
+#chat {
+    clear: both;
+    border: double;
+    text-align: center;
+    font-size: small;
+    
+}
+#messages {
+    padding: 0%;
+    background-color: rgba(255,165,0,.75);
+    
+}
+
+#messagebox {
+    padding-left: 24%;
+    padding-right: 24%;
+    border: double;
+}
+
+#sendmessage {
+    clear: both;
+    border: none;
+    background-color: rgb(100,100,100);
+}
+
+#reply_form {
+    margin: 0;
+    padding: 0%;
+    width: 100%;
+    border: none;
+    
+}
+
+#recipient, #subject, #body, {
+    margin: 0%;
+    border: none;
+    padding: 0%;
+    clear: left;
+    float: left;
+}
+#sendform {
+    width: 50%;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+#submit_message {
+    float: inherit;
+}
+
 /*Footer - Small*/
 footer {
+    color: rgb(225,225,225);
+    background-color: rgb(25,25,25);
     margin-top: 7%;
     clear: both;
     text-align: center;
     font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -220,3 +269,4 @@ footer {
     /*Footer - Large*/
     
 }
+
