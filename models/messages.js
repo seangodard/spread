@@ -9,7 +9,7 @@ var db = mongojs('spreadapp', ['messages']);
 module.exports.retrieve_inbox = function(username, callback){
     
     // find a collection in which the username is the sender or the recipient
-    db.messages.find({$or:[{sender:username,owner:username},{recipient:username,owner:username}]},function(error,inbox){
+    db.messages.find({$or:[{sender:username,owner:username},{recipient:username,owner:username}]} [{$sort:timestamp}],function(error,inbox){
         if (error) throw error;
         callback(inbox);
     });
