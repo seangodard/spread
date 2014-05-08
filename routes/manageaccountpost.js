@@ -8,20 +8,18 @@ module.exports = function(request,response) {
     
     var loggedin_username = request.session.username;
     
-    // Get new post information if it's there
-    var new_subject = validator.escape(request.body.subject);
-    var new_body = validator.escape(request.body.body);
-    var timestamp = new Date();
-    
     // Get info for update picture
     var new_picture = validator.escape(request.session.new_picture);
     
     // Get info for update email
-    var new_email = validator.escape(request.session.new_picture);
+    var new_email = validator.escape(request.session.new_email);
+    
+    // Get info for update bio
+    var new_bio = validator.escape(request.session.new_bio);
     
     // Get info for adding a new video
     var video_url = validator.escape(request.session.video_url);
-    var promoted_video = validator.escape(request.session.promoted_video)
+    var promoted_video_url = validator.escape(request.session.promoted_video_url)
     var view_count = 0;
     var shares_needed = 0;
     var category = validator.escape(request.session.video_category);
@@ -29,35 +27,51 @@ module.exports = function(request,response) {
     var length = validator.escape(request.session.length);
     var title = validator.escape(request.session.video_title);
     var thumbnail = request.session.thumbnail;
-        
     
-    // Get which video the user selected as promoted 
-    videos.change_promoted_video(loggedin_username, promoted_video, function() {
+    console.log(promoted_video_url+'here');
+    if (promoted_video_url) {   
+        // Get which video the user selected as promoted
         
+        videos.change_promoted_video(loggedin_username, promoted_video_url, function() {
+            response.redirect('/manageaccount');
+        });
+    }
+    
+    if (new_picture) {
         // Call update picture
         users.update_picture(loggedin_username, new_picture, function() {
-            
-            // Call update email 
-            users.update_email(loggedin_username, new_email, function() {
-                
-                // Add a new video to the videos collection
-                videos.post_new_video(loggedin_username, video_url, length,
-                                      title, view_count, shares_needed, 0, 0, 0,
-                                      category, promoted, thumbnail, function() {
-                    
-                    // Edit a post
-                    posts.edit_post(loggedin_username, timestamp, new_subject, new_body, function() {
-                        
-                        // Call add_post to add a new post to the posts collection
-                        users.update_bio(loggedin_username, new_bio, function(){
-                        
-                            response.redirect('/manageaccount');
-                            
-                        });
-                    });
-                });
-            });
+            response.redirect('/manageaccount');    
         });
-    });
+    }
+    
+    if (new_email) {
+        // Call update email 
+        users.update_email(loggedin_username, new_email, function() {
+            response.redirect('/manageaccount');
+        });            
+    }
+    
+    if (video_url && length && title && thumbnail && promoted && category) {
+        // Add a new video to the videos collection
+        videos.post_new_video(loggedin_username, video_url, length,
+                                title, view_count, shares_needed, 0, 0, 0,
+                                category, promoted, thumbnail, function() {
+            response.redirect('/manageaccount');
+        });                
+    }
+    
+    if (new_bio) {
+        // Call add_post to add a new post to the posts collection
+        users.update_bio(loggedin_username, new_bio, function(){                    
+            response.redirect('/manageaccount');
+                                
+        });        
+    }
+    
+    else {
+        console.log('error');
+        request.session.error = 'Something went wrong. Please try again. Fill out only one form.';
+        response.redirect('/manageaccount');                    
+    }
     
 };
