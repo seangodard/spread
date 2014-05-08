@@ -7,3 +7,10 @@ module.exports = function(request,response) {
     
     response.render('inbox', {username:loggedin_username});
 };
+
+var inbox = require(‘../models/messages);
+module.exports = function(request, response) {
+    inbox.retrieve_inbox(loggedin_username,function(allMessages) {
+        response.render(‘allmessages’, {inbox:allMessages});
+    });
+};
