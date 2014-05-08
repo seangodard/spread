@@ -8,9 +8,6 @@ module.exports = function(request,response) {
     
     var loggedin_username = request.session.username;
     
-    // Get info for update picture
-    var new_picture = validator.escape(request.body.new_picture);
-    
     // Get info for update email
     var new_email = validator.escape(request.body.new_email);
     
@@ -32,13 +29,6 @@ module.exports = function(request,response) {
         // Get which video the user selected as promoted
         videos.change_promoted_video(loggedin_username, promoted_video_url, function() {
             response.redirect('/profile/'+loggedin_username);
-        });
-    }
-    
-    else if (new_picture) {
-        // Call update picture
-        users.update_picture(loggedin_username, new_picture, function() {
-            response.redirect('/profile/'+loggedin_username);    
         });
     }
     
