@@ -52,7 +52,7 @@ module.exports.login = function(username, password, callback) {
         }
     });
 };
-
+/*
 // Change password
 module.exports.change_password = function(username, old_password, new_password, callback) {
     
@@ -92,7 +92,7 @@ module.exports.change_password = function(username, old_password, new_password, 
         });
     });
 };
-
+*/
 // Update bio
 module.exports.update_bio = function(username, new_bio, callback) {
     db.users.update({username:username},{$set: {bio:new_bio}}, function(error) {
@@ -103,7 +103,7 @@ module.exports.update_bio = function(username, new_bio, callback) {
 
 // Update profile picture
 module.exports.update_picture = function(username, new_picture, callback) {
-    db.users.update({username:username},{$set: {email:new_picture}}, function(error) {
+    db.users.update({username:username},{$set: {picture:new_picture}}, function(error) {
         if (error) throw error;
         callback(true);
     });
